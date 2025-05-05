@@ -21,14 +21,9 @@ public static class MauiProgram
             });
 
         // Configuração do Firebase
-        var firebaseConfig = new FirebaseConfig("SUA_API_KEY");
+        var firebaseConfig = new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU");
         var firebaseAuthProvider = new FirebaseAuthProvider(firebaseConfig);
-        var firebaseClient = new FirebaseClient(
-            "SUA_URL_DO_FIREBASE",
-            new FirebaseOptions
-            {
-                AuthTokenAsyncFactory = () => Task.FromResult("SEU_TOKEN_DE_AUTENTICAÇÃO")
-            });
+        var firebaseClient = new FirebaseClient("https://caca360-app.firebaseio.com");
 
         // Registrar no DI
         builder.Services.AddSingleton(firebaseAuthProvider);
