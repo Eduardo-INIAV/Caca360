@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="caca360.LoginPage"
+             Title="Login">
+
+    <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+        <Label Text="Caca 360" FontSize="28" HorizontalOptions="Center" />
+        <Entry Placeholder="Utilizador" Text="{Binding Username}" />
+        <Entry Placeholder="Palavra-passe" IsPassword="True" Text="{Binding Password}" />
+        <Button Text="Entrar" Command="{Binding LoginCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
