@@ -9,16 +9,20 @@ public partial class App : Application
     {
         InitializeComponent();
 
+        // Recupera o token de autenticação armazenado localmente
         var token = Preferences.Default.Get("auth_token", string.Empty);
 
+        // Verifica se o token está vazio ou inválido
         if (string.IsNullOrEmpty(token))
         {
-            var loginPage = MauiProgram.ServiceProvider.GetService<LoginPage>();
+            // Redireciona para a página de login
+            var loginPage = MauiProgram.ServiceProvider.GetRequiredService<LoginPage>();
             MainPage = new NavigationPage(loginPage);
         }
         else
         {
+            // Redireciona para a página principal (AppShell)
             MainPage = new AppShell();
         }
     }
-}
+} 
