@@ -9,7 +9,6 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 }
-
 public class MainPageViewModel
 {
     public ICommand NavigateToDashboardCommand { get; }
@@ -24,6 +23,5 @@ public class MainPageViewModel
         NavigateToAbateCommand = new Command(async () => await Shell.Current.GoToAsync("//Abate"));
         NavigateToCensosCommand = new Command(async () => await Shell.Current.GoToAsync("//Censos"));
         NavigateToProfileCommand = new Command(async () => await Shell.Current.GoToAsync("//Profile"));
-        
     }
 }

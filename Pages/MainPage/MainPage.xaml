@@ -4,17 +4,10 @@
              Title="Main Page">
 
     <VerticalStackLayout Padding="20" Spacing="15">
-        <Label Text="Bem-vindo ao Caça 360" 
-               FontSize="24" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
-        <Button Text="Ir para Dashboard" 
-                Command="{Binding NavigateToDashboardCommand}" />
-        <Button Text="Ir para Abate" 
-                Command="{Binding NavigateToAbateCommand}" />
-        <Button Text="Ir para Censos" 
-                Command="{Binding NavigateToCensosCommand}" />
-        <Button Text="Ir para Profile" 
-        Command="{Binding NavigateToProfileCommand}" />
+        <Label Text="Bem-vindo ao CaÃ§a 360" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+        <Button Text="Ir para Dashboard" Command="{Binding NavigateToDashboardCommand}" />
+        <Button Text="Ir para Abate" Command="{Binding NavigateToAbateCommand}" />
+        <Button Text="Ir para Censos" Command="{Binding NavigateToCensosCommand}" />
+        <Button Text="Ir para Profile" Command="{Binding NavigateToProfileCommand}" />
     </VerticalStackLayout>
 </ContentPage>

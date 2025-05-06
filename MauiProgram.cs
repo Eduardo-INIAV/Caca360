@@ -4,7 +4,6 @@ using Firebase.Auth;
 using caca360.Services;
 
 namespace caca360;
-
 public static class MauiProgram
 {
     public static IServiceProvider? ServiceProvider { get; private set; }

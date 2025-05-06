@@ -8,7 +8,7 @@ public partial class DashboardPage : ContentPage
     {
         InitializeComponent();
 
-        var surveyUrl = "https://survey123.arcgis.com/share/EXEMPLO_ID_DO_FORMULARIO";
+        var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/90bec55361f245a4bf2d238159e1b7fd";
         ArcGisWebView.Source = surveyUrl;
     }
 }

@@ -4,13 +4,13 @@
              Title="Perfil">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Perfil do Utilizador" FontSize="24" HorizontalOptions="Center" />
-            <Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
+			<Label Text="Perfil do Utilizador" FontSize="24" HorizontalOptions="Center" />
+			<Entry Placeholder="Carta de CaÃ§ador" Text="{Binding HuntingLicense}" />
             <Picker Title="Tipo" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" />
-            <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
+            <Picker Title="GÃªnero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
             <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
-            <Picker Title="Tipo de Zona de Caça" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
-            <Entry Placeholder="Número" Keyboard="Numeric" Text="{Binding Number}" />
+            <Picker Title="Tipo de Zona de CaÃ§a" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
+            <Entry Placeholder="NÃºmero" Keyboard="Numeric" Text="{Binding Number}" />
             <Button Text="Salvar" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </ScrollView>
