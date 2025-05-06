@@ -7,6 +7,6 @@
         <Entry Placeholder="Utilizador" Text="{Binding Username}" />
         <Entry Placeholder="Palavra-passe" IsPassword="True" Text="{Binding Password}" />
         <Button Text="Entrar" Command="{Binding LoginCommand}" />
-		<Button Text="Se não tem conta deve registrar-sse." Clicked="OnRegisterButtonClicked" />
+		<Button Text="Se não tem conta deve registrar-se." Clicked="OnRegisterButtonClicked" />
     </VerticalStackLayout>
 </ContentPage>

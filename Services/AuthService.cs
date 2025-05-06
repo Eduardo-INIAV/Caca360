@@ -7,7 +7,22 @@ namespace caca360.Services;
 public class AuthService
 {
     public string Token { get; private set; } = string.Empty;
+
     public void SetToken(string token) => Token = token;
+
+    public async Task<string> LoginAsync(string email, string password)
+    {
+        var authProvider = MauiProgram.ServiceProvider.GetRequiredService<FirebaseAuthProvider>();
+        var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+        Token = auth.FirebaseToken;
+
+        if (string.IsNullOrEmpty(Token))
+        {
+            throw new Exception("Falha ao obter o token de autenticação.");
+        }
+
+        return Token;
+    }
 
     public async Task RegisterUserAsync(string username, string email, string password)
     {

@@ -1,33 +1,63 @@
 ﻿using System.ComponentModel;
-using caca360;
+using System.Windows.Input;
 using caca360.Services;
 
 namespace caca360;
 
 public class LoginViewModel : INotifyPropertyChanged
 {
-    private readonly ApiService _api;
-    private readonly AuthService _auth;
-    public Command LoginCommand { get; }
+    private readonly AuthService _authService;
+    private string _username = string.Empty; // Inicializado para evitar nulidade
+    private string _password = string.Empty; // Inicializado para evitar nulidade
 
-    public string Username { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-    public LoginViewModel(ApiService api, AuthService auth)
+    public string Username
     {
-        _api = api;
-        _auth = auth;
+        get => _username;
+        set
+        {
+            _username = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Username)));
+        }
+    }
+
+    public string Password
+    {
+        get => _password;
+        set
+        {
+            _password = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Password)));
+        }
+    }
+
+    public ICommand LoginCommand { get; }
+
+    public LoginViewModel(AuthService authService)
+    {
+        _authService = authService;
         LoginCommand = new Command(async () => await Login());
     }
 
     private async Task Login()
     {
-        var token = await _api.LoginAsync(Username, Password);
-        _auth.SetToken(token);
-        var window = Application.Current?.Windows.FirstOrDefault();
-        if (window is not null)
-            window.Page = new AppShell();
-    }
+        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
+            return;
+        }
 
-    public event PropertyChangedEventHandler? PropertyChanged;
+        try
+        {
+            var token = await _authService.LoginAsync(Username, Password);
+            await App.Current.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
+            // Redirecionar para a página principal
+            await Shell.Current.GoToAsync("//MainPage");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", $"Falha no login: {ex.Message}", "OK");
+        }
+    }
 }

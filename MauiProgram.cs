@@ -7,7 +7,7 @@ namespace caca360;
 
 public static class MauiProgram
 {
-    public static IServiceProvider ServiceProvider { get; private set; }
+    public static IServiceProvider? ServiceProvider { get; private set; }
 
     public static MauiApp CreateMauiApp()
     {
@@ -37,6 +37,7 @@ public static class MauiProgram
 
         // ViewModels
         builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<RegisterViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
