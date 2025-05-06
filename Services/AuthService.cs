@@ -29,11 +29,11 @@ public class AuthService
         var authProvider = MauiProgram.ServiceProvider.GetRequiredService<FirebaseAuthProvider>();
         var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username, true);
 
-        // Opcional: Salvar informações adicionais no Realtime Database
+        // Salvar informações adicionais no Realtime Database
         var firebaseClient = MauiProgram.ServiceProvider.GetRequiredService<FirebaseClient>();
         await firebaseClient
-            .Child("users")
-            .Child(auth.User.LocalId)
+            .Child("users") // Adiciona o nó "users"
+            .Child(auth.User.LocalId) // Adiciona o ID único do usuário
             .PutAsync(new { Username = username, Email = email });
     }
 }

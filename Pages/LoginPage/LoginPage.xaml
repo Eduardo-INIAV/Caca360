@@ -4,7 +4,7 @@
              Title="Login">
     <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
         <Label Text="Caca 360" FontSize="28" HorizontalOptions="Center" />
-        <Entry Placeholder="Email" Text="{Binding Email}" />
+        <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
         <Entry Placeholder="Palavra-passe" IsPassword="True" Text="{Binding Password}" />
         <Button Text="Entrar" Command="{Binding LoginCommand}" />
 		<Button Text="Se não tem conta deve registrar-se." Clicked="OnRegisterButtonClicked" />

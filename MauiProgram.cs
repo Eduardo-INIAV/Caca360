@@ -24,7 +24,7 @@ public static class MauiProgram
         var firebaseConfig = new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU");
         var firebaseAuthProvider = new FirebaseAuthProvider(firebaseConfig);
         var firebaseClient = new FirebaseClient(
-         "https://caca360-app.firebaseio.com"
+         "https://caca360-app.firebaseio.com/users"
      );
 
         // Registrar no DI
