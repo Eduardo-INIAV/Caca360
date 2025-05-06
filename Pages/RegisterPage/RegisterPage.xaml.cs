@@ -3,11 +3,7 @@ namespace caca360;
 
 public partial class RegisterPage : ContentPage
 {
-    public RegisterPage()
-    {
-        InitializeComponent();
-    }
-
+    public RegisterPage() => InitializeComponent();
     private async void OnRegisterButtonClicked(object sender, EventArgs e)
     {
         var username = UsernameEntry.Text;

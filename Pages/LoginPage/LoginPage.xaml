@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="caca360.LoginPage"
              Title="Login">
-
     <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
         <Label Text="Caca 360" FontSize="28" HorizontalOptions="Center" />
         <Entry Placeholder="Utilizador" Text="{Binding Username}" />
