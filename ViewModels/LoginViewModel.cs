@@ -7,18 +7,18 @@ namespace caca360;
 public class LoginViewModel : INotifyPropertyChanged
 {
     private readonly AuthService _authService;
-    private string _username = string.Empty; // Inicializado para evitar nulidade
+    private string _email = string.Empty; // Inicializado para evitar nulidade
     private string _password = string.Empty; // Inicializado para evitar nulidade
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public string Username
+    public string Email
     {
-        get => _username;
+        get => _email;
         set
         {
-            _username = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Username)));
+            _email = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Email)));
         }
     }
 
@@ -42,7 +42,7 @@ public class LoginViewModel : INotifyPropertyChanged
 
     private async Task Login()
     {
-        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+        if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
         {
             await App.Current.MainPage.DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
             return;
@@ -50,7 +50,7 @@ public class LoginViewModel : INotifyPropertyChanged
 
         try
         {
-            var token = await _authService.LoginAsync(Username, Password);
+            var token = await _authService.LoginAsync(Email, Password);
             await App.Current.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
             // Redirecionar para a página principal
             await Shell.Current.GoToAsync("//MainPage");
