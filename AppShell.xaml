@@ -3,9 +3,11 @@
        xmlns:local="clr-namespace:caca360"
        x:Class="caca360.AppShell">
 
+    <ShellContent Title="Main Page" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     <TabBar>
-        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
-        <ShellContent Title="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
-        <ShellContent Title="Censos" ContentTemplate="{DataTemplate local:CensosPage}" />
+        <ShellContent Title="Dashboard" Route="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
+        <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
+        <ShellContent Title="Censos" Route="Censos" ContentTemplate="{DataTemplate local:CensosPage}" />
+        <ShellContent Title="Perfil" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
     </TabBar>
 </Shell>

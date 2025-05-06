@@ -1,0 +1,17 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="caca360.ProfilePage"
+             Title="Perfil">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Perfil do Utilizador" FontSize="24" HorizontalOptions="Center" />
+            <Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
+            <Picker Title="Tipo" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" />
+            <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
+            <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
+            <Picker Title="Tipo de Zona de Caça" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
+            <Entry Placeholder="Número" Keyboard="Numeric" Text="{Binding Number}" />
+            <Button Text="Salvar" Command="{Binding SaveCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

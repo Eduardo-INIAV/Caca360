@@ -1,4 +1,4 @@
-﻿// Projeto base MAUI para "Caça 360º"
+﻿// Projeto base MAUI para "Caça 360"
 using Firebase.Database;
 using Firebase.Auth;
 using caca360.Services;
@@ -38,6 +38,7 @@ public static class MauiProgram
         // ViewModels
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<RegisterViewModel>();
+        builder.Services.AddTransient<ProfileViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -45,6 +46,8 @@ public static class MauiProgram
         builder.Services.AddTransient<AbatePage>();
         builder.Services.AddTransient<CensosPage>();
         builder.Services.AddTransient<RegisterPage>();
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<ProfilePage>();
 
 
 
