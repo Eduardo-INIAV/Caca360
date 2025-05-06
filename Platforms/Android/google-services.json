@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "901915303896",
+    "project_id": "caca360-app",
+    "storage_bucket": "caca360-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901915303896:android:beccc51bb68bc2d4005cad",
+        "android_client_info": {
+          "package_name": "com.caca360.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGPYjoyggPSVUHyUHsI62bybZA3eE6rgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

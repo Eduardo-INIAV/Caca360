@@ -6,6 +6,6 @@
     <TabBar>
         <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
         <ShellContent Title="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
-        <ShellContent Title="Censo" ContentTemplate="{DataTemplate local:CensosPage}" />
+        <ShellContent Title="Censos" ContentTemplate="{DataTemplate local:CensosPage}" />
     </TabBar>
 </Shell>
