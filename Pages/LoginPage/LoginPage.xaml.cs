@@ -11,7 +11,6 @@ public partial class LoginPage : ContentPage
         BindingContext = vm;
         _authService = authService;
     }
-<<<<<<< HEAD
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
@@ -42,11 +41,3 @@ public partial class LoginPage : ContentPage
         await Navigation.PushAsync(registerPage);
     }
 }
-=======
-    private async void OnRegisterButtonClicked(object sender, EventArgs e)
-        {
-            var registerPage = MauiProgram.ServiceProvider.GetRequiredService<RegisterPage>();
-            await Navigation.PushAsync(registerPage);
-        }
-}
->>>>>>> 4ff6a764e4d3966fc84785130374f8f948ede153
