@@ -23,7 +23,7 @@ public static class MauiProgram
         var firebaseConfig = new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU");
         var firebaseAuthProvider = new FirebaseAuthProvider(firebaseConfig);
         var firebaseClient = new FirebaseClient(
-         "https://console.firebase.google.com/u/1/project/caca360-app/database/caca360-app-default-rtdb/data/~2F?hl=pt-br"
+         "https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/"
      );
 
         // Registrar no DI
