@@ -14,10 +14,10 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
-        var username = ((LoginViewModel)BindingContext).Username;
+        var email = ((LoginViewModel)BindingContext).Email;
         var password = ((LoginViewModel)BindingContext).Password;
 
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
             await DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
             return;
@@ -26,7 +26,7 @@ public partial class LoginPage : ContentPage
         try
         {
             // Autentica o usuário com Firebase
-            var token = await _authService.LoginAsync(username, password);
+            var token = await _authService.LoginAsync(email, password);
             await DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
         }
         catch (Exception ex)
