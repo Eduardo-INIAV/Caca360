@@ -1,3 +1,4 @@
+using caca360.Services;
 namespace caca360;
 
 public partial class RegisterPage : ContentPage

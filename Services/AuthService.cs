@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace caca360.Services;
 
