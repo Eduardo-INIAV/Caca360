@@ -21,17 +21,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
-        // Configuração do Firebase
-        var firebaseConfig = new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU");
-        var firebaseAuthProvider = new FirebaseAuthProvider(firebaseConfig);
-        var firebaseClient = new FirebaseClient(
-            "https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/"
-        );
-
-        // Registrar no DI
-        builder.Services.AddSingleton(firebaseAuthProvider);
-        builder.Services.AddSingleton(firebaseClient);
+        // Registro dos serviços Firebase
+        builder.Services.AddSingleton(_ => new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU")));
+        builder.Services.AddSingleton(_ => new FirebaseClient("https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/"));
 
         // Serviços
         builder.Services.AddSingleton<AuthService>();

@@ -3,6 +3,7 @@
        xmlns:local="clr-namespace:caca360"
        x:Class="caca360.AppShell">
     <ShellContent Title="Main Page" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+    <ShellContent Title="Login" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     <TabBar>
         <ShellContent Title="Dashboard" Route="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
         <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
