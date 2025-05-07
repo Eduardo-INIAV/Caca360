@@ -2,13 +2,13 @@
 using System.Windows.Input;
 using caca360.Services;
 
-namespace caca360;
+namespace caca360.ViewModels;
 
-public class LoginViewModel : INotifyPropertyChanged
+public partial class LoginViewModel : INotifyPropertyChanged
 {
     private readonly AuthService _authService;
-    private string _email = string.Empty; // Inicializado para evitar nulidade
-    private string _password = string.Empty; // Inicializado para evitar nulidade
+    private string _email = string.Empty;
+    private string _password = string.Empty;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -42,21 +42,26 @@ public class LoginViewModel : INotifyPropertyChanged
 
     private async Task Login()
     {
-        if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-        {
-            await App.Current.MainPage.DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
-            return;
-        }
-
         try
         {
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
+                return;
+            }
+
             var token = await _authService.LoginAsync(Email, Password);
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new Exception("Token inválido.");
+            }
+
             await App.Current.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
-            // Redirecionar para a página principal
             await Shell.Current.GoToAsync("//MainPage");
         }
         catch (Exception ex)
         {
+            System.Diagnostics.Debug.WriteLine($"Erro no login: {ex}");
             await App.Current.MainPage.DisplayAlert("Erro", $"Falha no login: {ex.Message}", "OK");
         }
     }

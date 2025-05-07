@@ -2,13 +2,13 @@
 using System.Windows.Input;
 using caca360.Services;
 
-namespace caca360;
+namespace caca360.ViewModels;
 
-public class RegisterViewModel : INotifyPropertyChanged
+public partial class RegisterViewModel : INotifyPropertyChanged
 {
     private readonly AuthService _authService;
-    private string _username = string.Empty; // Inicializado para evitar nulidade
-    private string _email = string.Empty;    // Inicializado para evitar nulidade
+    private string _username = string.Empty;
+    private string _email = string.Empty;
     private string _password = string.Empty;
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -61,7 +61,7 @@ public class RegisterViewModel : INotifyPropertyChanged
 
         try
         {
-            await _authService.RegisterUserAsync(Username, Email, Password);
+            await AuthService.RegisterUserAsync(Username, Email, Password); // Use the class name instead of the instance
             await App.Current.MainPage.DisplayAlert("Sucesso", "Registro realizado com sucesso!", "OK");
             // Redirecionar para a página de login
             await Shell.Current.GoToAsync("..");
@@ -71,4 +71,5 @@ public class RegisterViewModel : INotifyPropertyChanged
             await App.Current.MainPage.DisplayAlert("Erro", $"Falha no registro: {ex.Message}", "OK");
         }
     }
+
 }

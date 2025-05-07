@@ -1,4 +1,6 @@
-﻿namespace caca360;
+﻿using caca360.ViewModels;
+
+namespace caca360;
 
 public partial class ProfilePage : ContentPage
 {

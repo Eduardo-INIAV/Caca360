@@ -24,7 +24,7 @@ public class AuthService
         return Token;
     }
 
-    public async Task RegisterUserAsync(string username, string email, string password)
+    public static async Task RegisterUserAsync(string username, string email, string password)
     {
         var authProvider = MauiProgram.ServiceProvider.GetRequiredService<FirebaseAuthProvider>();
         var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username, true);
@@ -36,4 +36,5 @@ public class AuthService
             .Child(auth.User.LocalId) // Adiciona o ID único do usuário
             .PutAsync(new { Username = username, Email = email });
     }
+
 }

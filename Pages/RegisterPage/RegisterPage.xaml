@@ -1,11 +1,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:caca360.ViewModels"
              x:Class="caca360.RegisterPage"
+             x:DataType="viewModels:RegisterViewModel"
              Title="Registo">
+    
     <VerticalStackLayout Padding="20" Spacing="15">
         <Entry Placeholder="Nome de utilizador" Text="{Binding Username}" />
         <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
         <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Password}" />
-        <Button Text="Registar" Clicked="OnRegisterButtonClicked" />
+        <Button Text="Registar" Command="{Binding RegisterCommand}" />
     </VerticalStackLayout>
 </ContentPage>

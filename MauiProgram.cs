@@ -2,11 +2,14 @@
 using Firebase.Database;
 using Firebase.Auth;
 using caca360.Services;
+using caca360.ViewModels;
 
 namespace caca360;
 public static class MauiProgram
 {
     public static IServiceProvider? ServiceProvider { get; private set; }
+
+
 
     public static MauiApp CreateMauiApp()
     {
@@ -31,7 +34,6 @@ public static class MauiProgram
         builder.Services.AddSingleton(firebaseClient);
 
         // Serviços
-        builder.Services.AddSingleton<ApiService>();
         builder.Services.AddSingleton<AuthService>();
 
         // ViewModels
@@ -48,8 +50,6 @@ public static class MauiProgram
         builder.Services.AddTransient<RegisterPage>();
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<ProfilePage>();
-
-
 
         var app = builder.Build();
         ServiceProvider = app.Services;

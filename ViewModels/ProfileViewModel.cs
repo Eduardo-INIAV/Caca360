@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace caca360;
+namespace caca360.ViewModels;
 
 public class ProfileViewModel : INotifyPropertyChanged
 {

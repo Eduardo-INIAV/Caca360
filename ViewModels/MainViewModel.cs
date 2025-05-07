@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace caca360;
+namespace caca360.ViewModels;
 public class MainViewModel
 {
     public ICommand NavigateToDashboardCommand { get; }
