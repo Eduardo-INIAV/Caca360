@@ -23,8 +23,8 @@ public static class MauiProgram
         var firebaseConfig = new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU");
         var firebaseAuthProvider = new FirebaseAuthProvider(firebaseConfig);
         var firebaseClient = new FirebaseClient(
-         "https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/"
-     );
+            "https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/"
+        );
 
         // Registrar no DI
         builder.Services.AddSingleton(firebaseAuthProvider);
