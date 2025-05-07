@@ -59,6 +59,12 @@ public partial class RegisterViewModel : INotifyPropertyChanged
             return;
         }
 
+        if (Password.Length < 6)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", "A senha deve ter pelo menos 6 caracteres.", "OK");
+            return;
+        }
+
         try
         {
             await AuthService.RegisterUserAsync(Username, Email, Password); // Use the class name instead of the instance

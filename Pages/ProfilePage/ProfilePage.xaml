@@ -6,7 +6,7 @@
              Title="Perfil">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-			<Label Text="Perfil do UO erro tilizador" FontSize="24" HorizontalOptions="Center" />
+			<Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />
 			<Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
             <Picker Title="Tipo" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" />
             <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />

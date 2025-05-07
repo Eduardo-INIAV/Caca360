@@ -33,6 +33,7 @@ public static class MauiProgram
         builder.Services.AddTransient<RegisterViewModel>();
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<MainViewModel>();
+        builder.Services.AddTransient<InfosViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -42,6 +43,8 @@ public static class MauiProgram
         builder.Services.AddTransient<RegisterPage>();
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<ProfilePage>();
+        builder.Services.AddTransient<ZonasPage>();
+        builder.Services.AddTransient<InfosPage>();
 
         var app = builder.Build();
         ServiceProvider = app.Services;

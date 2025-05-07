@@ -12,6 +12,8 @@
         <Button Text="Ir para Abate" Command="{Binding NavigateToAbateCommand}" />
         <Button Text="Ir para Censos" Command="{Binding NavigateToCensosCommand}" />
         <Button Text="Ir para Profile" Command="{Binding NavigateToProfileCommand}" />
+        <Button Text="Ir para Zonas de Caça" Command="{Binding NavigateToZonasCommand}" />
+        <Button Text="Ir para Informações" Command="{Binding NavigateToInfosCommand}" />
         <Button Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="Red" TextColor="White" />
 
     </VerticalStackLayout>

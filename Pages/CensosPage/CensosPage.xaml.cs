@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace caca360;
+﻿namespace caca360;
 
 public partial class CensosPage : ContentPage
 {

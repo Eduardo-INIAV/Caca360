@@ -1,4 +1,4 @@
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:caca360"
        x:Class="caca360.AppShell">
@@ -9,5 +9,7 @@
         <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
         <ShellContent Title="Censos" Route="Censos" ContentTemplate="{DataTemplate local:CensosPage}" />
         <ShellContent Title="Perfil" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Title="Zonas de Caça" Route="ZonasPage" ContentTemplate="{DataTemplate local:ZonasPage}" />
+        <ShellContent Title="Informações" Route="InfosPage" ContentTemplate="{DataTemplate local:InfosPage}" />
     </TabBar>
 </Shell>

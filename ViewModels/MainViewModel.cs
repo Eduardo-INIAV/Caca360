@@ -7,7 +7,8 @@ public class MainViewModel
     public ICommand NavigateToAbateCommand { get; }
     public ICommand NavigateToCensosCommand { get; }
     public ICommand NavigateToProfileCommand { get; }
-
+    public ICommand NavigateToZonasCommand { get; }
+    public ICommand NavigateToInfosCommand { get; }
     public ICommand LogoutCommand { get; }
 
     public MainViewModel()
@@ -16,9 +17,11 @@ public class MainViewModel
         NavigateToAbateCommand = new Command(async () => await Shell.Current.GoToAsync("//Abate"));
         NavigateToCensosCommand = new Command(async () => await Shell.Current.GoToAsync("//Censos"));
         NavigateToProfileCommand = new Command(async () => await Shell.Current.GoToAsync("//ProfilePage"));
+        NavigateToZonasCommand = new Command(async () => await Shell.Current.GoToAsync("//ZonasPage")); // Fixed
+        NavigateToInfosCommand = new Command(async () => await Shell.Current.GoToAsync("//InfosPage"));
         LogoutCommand = new Command(async () => await Logout());
     }
-    private async Task Logout()
+    private static async Task Logout()
     {
         // Limpa o token de autenticação
         Preferences.Default.Remove("auth_token");
