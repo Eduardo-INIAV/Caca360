@@ -74,6 +74,34 @@
                    LineBreakMode="WordWrap" 
                    HorizontalTextAlignment="Justify"/>
 
+            <!-- Imagens em pares -->
+            <Grid ColumnDefinitions="*,*" RowSpacing="10">
+                <Image Source="perdiz1.png"
+                       Aspect="AspectFit"
+                       HeightRequest="200"
+                       HorizontalOptions="Center"
+                       Grid.Column="0" />   
+                <Image Source="perdiz2.png"
+                        Aspect="AspectFit"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"
+                        Grid.Column="1" />
+            </Grid>
+
+            <!-- Texto informativo -->
+            <Label Text="A perdiz-vermelha é uma ave terrestre sedentária pertencente à família Phasianidae, ordem Galliformes, que inclui também as codornizes e os faisões.
+                        Com o seu aspeto de galináceo de corpo arredondado, é uma excelente andarilha, de porte médio, rondando os 35 a 40 cm de comprimento. O bico e as patas são vermelhos, assim como o anel ocular, daí o nome de perdiz-vermelha. Tem uma plumagem de cor parda acastanhada na zona dorsal do corpo e cabeça e a sua zona ventral apresenta um tom acinzentado. Apresenta uma linha preta que contorna a porção branca da cabeça e desce até ao peito, onde forma um colar negro característico da espécie, de donde irradiam estrias da mesma cor que salpicam o cinzento do peito. Os flancos são caracteristicamente estriados de castanho e branco, que ajudam a camuflar-se no chão. O dimorfismo sexual é pouco acentuado nesta espécie, contudo subsistem algumas características que, em observação simultânea, permitem distinguir os machos das fêmeas com relativa segurança:
+                        •	Geralmente, o macho é maior e mais pesado do que a fêmea, com um peso médio de 483 g e 395 g para o macho e fêmea, respetivamente.
+                        •	Normalmente, os machos têm também uma cabeça mais volumosa.
+                        •	Os machos têm os tarsos mais compridos e grossos, esporões com base larga e arredondada, enquanto as fêmeas apresentam tarsos mais curtos e delgados e, quando desenvolvem esporões, estes têm a base estreita e são bicudos.
+                        Os juvenis (menos de 1 ano) são essencialmente acastanhados e podem distinguir-se dos animais adultos pela observação das rémiges primárias (i.e., as dez penas da extremidade da asa):
+                        •	O juvenil inicia a muda durante o primeiro mês de vida, a qual se prolonga até outubro e novembro, porém não ocorre substituição das últimas duas rémiges. Estas duas penas caracterizam-se por uma extremidade pontiaguda que pode apresentar uma pequena pinta branca.
+                        •	O adulto inicia a muda de todas as rémiges primárias duas ou três semanas antes dos juvenis e as suas duas últimas penas, independentemente de já terem sido mudadas ou não, têm a extremidade arredondada.
+                        A perdiz-vermelha é uma espécie cinegética de caça menor com estatuto considerado pouco preocupante (LC), pela União Internacional da Conservação da Natureza, embora no presente se verifique uma tendência de declínio populacional desta espécie."
+                   FontSize="16"
+                   LineBreakMode="WordWrap" 
+                   HorizontalTextAlignment="Justify"/>  
+
             <!-- Link para a fonte -->
 			<Label Text="Para Mais Informações: http://especiescinegeticas.pt/areas-acao/especies-cinegeticas"
                    TextColor="Blue"
