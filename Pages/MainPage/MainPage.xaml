@@ -4,17 +4,93 @@
              xmlns:vm="clr-namespace:caca360" 
              x:Class="caca360.MainPage"
              x:DataType="viewModels:MainViewModel"
-             Title="MainPage">
+             Title=""
+             BackgroundImageSource="fundo.png">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Label Text="Bem-vindo ao Caça 360" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
-        <Button Text="Ir para Dashboard" Command="{Binding NavigateToDashboardCommand}" />
-        <Button Text="Ir para Abate" Command="{Binding NavigateToAbateCommand}" />
-        <Button Text="Ir para Censos" Command="{Binding NavigateToCensosCommand}" />
-        <Button Text="Ir para Profile" Command="{Binding NavigateToProfileCommand}" />
-        <Button Text="Ir para Zonas de Caça" Command="{Binding NavigateToZonasCommand}" />
-        <Button Text="Ir para Informações" Command="{Binding NavigateToInfosCommand}" />
-        <Button Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="Red" TextColor="White" />
+    <ContentPage.Resources>
+        <Style x:Key="SquareBlueButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />      <!-- Cantos arredondados -->
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="VerticalOptions" Value="Fill" />
+        </Style>
+    </ContentPage.Resources>
 
-    </VerticalStackLayout>
+
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill" RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button
+             Text="Logout"
+             Command="{Binding LogoutCommand}"
+             BackgroundColor="Red"
+             TextColor="White"
+             CornerRadius="20"
+             FontAttributes="Bold"
+             FontSize="12"
+             Padding="10,4"
+             HorizontalOptions="End"
+             VerticalOptions="Start"
+             Margin="0,10,10,0"
+             WidthRequest="80"
+             HeightRequest="32"
+             Grid.Row="0"
+             Grid.ColumnSpan="2" /> 
+
+        <Grid Grid.Row="0" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo à esquerda -->
+            <Image
+            Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+            Source="logo.png"
+            HeightRequest="100"
+            WidthRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,10,0,0" />
+
+            <!-- Texto centralizado abaixo do logo -->
+            <Label
+            Grid.Row="1" Grid.Column="1"
+            Text="Bem-vindo ao Caça 360"
+            FontSize="18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="0,110,90,16" />
+        </Grid>
+        
+        <Grid Grid.Row="1" ColumnSpacing="15" RowSpacing="15"
+              HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" Text="Ir para Dashboard" Command="{Binding NavigateToDashboardCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Button Grid.Row="0" Grid.Column="1" Text="Ir para Abate" Command="{Binding NavigateToAbateCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Button Grid.Row="1" Grid.Column="0" Text="Ir para Censos" Command="{Binding NavigateToCensosCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Ir para Profile" Command="{Binding NavigateToProfileCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Button Grid.Row="2" Grid.Column="0" Text="Ir para Zonas de Caça" Command="{Binding NavigateToZonasCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Button Grid.Row="2" Grid.Column="1" Text="Ir para Informações" Command="{Binding NavigateToInfosCommand}" Style="{StaticResource SquareBlueButton}" />
+        </Grid>
+    </Grid>
 </ContentPage>

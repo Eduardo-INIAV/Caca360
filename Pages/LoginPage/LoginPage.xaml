@@ -3,12 +3,28 @@
              xmlns:viewModels="clr-namespace:caca360.ViewModels"
              x:Class="caca360.LoginPage"
              x:DataType="viewModels:LoginViewModel"
-             Title="Login">
-    <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
-        <Label Text="Caca 360" FontSize="28" HorizontalOptions="Center" />
+             Title=""
+             BackgroundImageSource="fundo.png">
+
+    <ContentPage.Resources>
+        <Style x:Key="SquareBlueButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />
+            <!-- Cantos arredondados -->
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="VerticalOptions" Value="Fill" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="15,0,15,0" Spacing="15" VerticalOptions="Start">
+        <Image Source="logo.png" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Margin="0,0,0,10"/>
+        <Label Text="Login" FontSize="28" HorizontalOptions="Center" />
         <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
         <Entry Placeholder="Palavra-passe" IsPassword="True" Text="{Binding Password}" />
-        <Button Text="Entrar" Command="{Binding LoginCommand}" />
-        <Button Text="Se não tem conta deve registrar-se." Clicked="OnRegisterButtonClicked" />
+        <Button Text="Entrar" Command="{Binding LoginCommand}" Style="{StaticResource SquareBlueButton}" />
+        <Button Text="Se não tem conta deve registrar-se." Clicked="OnRegisterButtonClicked" Style="{StaticResource SquareBlueButton}" />
+        <Button Text="Mudar Palavra-passe" Command="{Binding ChangePasswordCommand}" Style="{StaticResource SquareBlueButton}" />
     </VerticalStackLayout>
 </ContentPage>

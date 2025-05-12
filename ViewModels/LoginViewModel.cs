@@ -11,6 +11,7 @@ public partial class LoginViewModel : INotifyPropertyChanged
     private string _password = string.Empty;
 
     public event PropertyChangedEventHandler? PropertyChanged;
+    public ICommand ChangePasswordCommand { get; }
 
     public string Email
     {
@@ -38,6 +39,7 @@ public partial class LoginViewModel : INotifyPropertyChanged
     {
         _authService = authService;
         LoginCommand = new Command(async () => await Login());
+        ChangePasswordCommand = new Command(async () => await OnChangePasswordAsync());
     }
 
     private async Task Login()
@@ -65,4 +67,26 @@ public partial class LoginViewModel : INotifyPropertyChanged
             await App.Current.MainPage.DisplayAlert("Erro", $"Falha no login: {ex.Message}", "OK");
         }
     }
+    private async Task OnChangePasswordAsync()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", "Por favor, insira um email válido.", "OK");
+                return;
+            }
+
+            // Chame aqui o serviço para enviar o email de redefinição de senha
+            // Exemplo fictício:
+            // await _authService.SendPasswordResetEmailAsync(Email);
+
+            await App.Current.MainPage.DisplayAlert("Sucesso", "Um email de redefinição de palavra-passe foi enviado.", "OK");
+        }
+        catch (Exception)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", "Não foi possível enviar o email de redefinição.", "OK");
+        }
+    }
 }
+
