@@ -42,6 +42,14 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 	</PropertyGroup>
+	
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android34.0'">
+  <PackageReference Include="Firebase.Dataset" Version="A_TUA_VERSAO" />
+</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android34.0'">
+		<PackageReference Include="Firebase.Dataset" Version="1.0.0" />
+	</ItemGroup>
+	
 
 	<ItemGroup>
 		<!-- App Icon -->
@@ -62,11 +70,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
 		<PackageReference Include="Firebase.Auth" Version="1.0.0" />
 		<PackageReference Include="Firebase.Database" Version="1.0.0">
-			  <NoWarn>
-				  NU1701	
-			  </NoWarn>
+			<NoWarn>$(NoWarn);NU1701</NoWarn>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />

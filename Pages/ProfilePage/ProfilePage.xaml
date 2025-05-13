@@ -3,7 +3,8 @@
              xmlns:viewModels="clr-namespace:caca360.ViewModels"
              x:DataType="viewModels:ProfileViewModel"
              x:Class="caca360.ProfilePage"
-             Title="Perfil">
+             Title=""
+             BackgroundImageSource="fundo.png">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 			<Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />

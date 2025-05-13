@@ -3,6 +3,7 @@ using Firebase.Database;
 using Firebase.Auth;
 using caca360.Services;
 using caca360.ViewModels;
+using CommunityToolkit.Maui;
 
 namespace caca360;
 public static class MauiProgram
@@ -16,6 +17,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
