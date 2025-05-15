@@ -9,25 +9,25 @@
 
     <Grid RowDefinitions="*,Auto">
         <ScrollView Grid.Row="0">
-            <StackLayout Padding="20" Spacing="15">
+            <StackLayout Padding="20" Spacing="40">
                 <Label Text="Bem-vindo à página de informações"
                        FontSize="24"
                        FontAttributes="Bold"
                        HorizontalOptions="Center" />
                 <toolkit:Expander>
                     <toolkit:Expander.Header>
-                        <Label Text="Espécies" FontSize="22" FontAttributes="Bold"/>
+                        <Label Text="> Espécies" FontSize="22" FontAttributes="Bold"/>
                     </toolkit:Expander.Header>
-                    <StackLayout>
+                    <StackLayout Padding="20" Spacing="40">
                         <toolkit:Expander>
                             <toolkit:Expander.Header>
-                                <Label Text="Aves Cinegéticas" FontSize="20" FontAttributes="Italic"/>
+                                <Label Text="> Aves Cinegéticas" FontSize="20" FontAttributes="Bold"/>
                             </toolkit:Expander.Header>
-                            <StackLayout>
+                            <StackLayout Padding="20" Spacing="40">
                                 <!-- Rola-Comum -->
                                 <toolkit:Expander>
                                     <toolkit:Expander.Header>
-                                        <Label Text="Rola-Comum" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="> Rola-Comum" FontSize="18" FontAttributes="Bold"/>
                                     </toolkit:Expander.Header>
                                     <StackLayout>
                                         <Grid ColumnDefinitions="*,*" RowSpacing="10">
@@ -47,7 +47,7 @@
                                 <!-- Codorniz -->
                                 <toolkit:Expander>
                                     <toolkit:Expander.Header>
-                                        <Label Text="Codorniz" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="> Codorniz" FontSize="18" FontAttributes="Bold"/>
                                     </toolkit:Expander.Header>
                                     <StackLayout>
                                         <Grid ColumnDefinitions="*,*" RowSpacing="10">
@@ -55,11 +55,11 @@
                                             <Image Source="coderniz2.png" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" Grid.Column="1" />
                                         </Grid>
                                         <Label Text="A codorniz é uma ave da família dos fasianídeos (tal como as perdizes, faisões, pavões e galinhas).
-                Trata-se do mais pequeno galináceo europeu, similar a um perdigoto, com cerca de 19 a 25 cm de comprimento, 32 a 35 cm de envergadura e um peso que oscila entre os 85 a 120 g.
-                Caracteriza-se por uma plumagem de cor parda, extremamente mimética, com o dorso e flancos listados, sendo geralmente muito semelhante em ambos os sexos.
-                A cabeça é pequena e robusta, com um bico grosso. Quando se encontra em repouso, o seu corpo arredondado e cauda muito curta ajudam esta ave a camuflar-se no meio da vegetação.
-                A codorniz é uma ave migradora parcial. Como tal, as suas asas são compridas e estreitas em relação ao corpo, estando perfeitamente adaptadas a voos de longas distâncias, como acontece nos movimentos nómadas ou erráticos e nas migrações intercontinentais.
-                A distinção entre sexos pode ser feita através da plumagem no peito e pela presença de uma mancha na garganta que só existe nos machos. Concretamente, o peito das fêmeas apresenta penas de cor pálida e salpicadas de manchas escuras, enquanto o dos machos apresenta penas de cor vermelho-ferrugem uniforme e sem manchas escuras. Ao nível da garganta, o macho adulto apresenta uma mancha escura longitudinal que se prolonga para ambos os lados e, com a idade, vai tomando uma forma que faz lembrar uma âncora." 
+                                            Trata-se do mais pequeno galináceo europeu, similar a um perdigoto, com cerca de 19 a 25 cm de comprimento, 32 a 35 cm de envergadura e um peso que oscila entre os 85 a 120 g.
+                                            Caracteriza-se por uma plumagem de cor parda, extremamente mimética, com o dorso e flancos listados, sendo geralmente muito semelhante em ambos os sexos.
+                                            A cabeça é pequena e robusta, com um bico grosso. Quando se encontra em repouso, o seu corpo arredondado e cauda muito curta ajudam esta ave a camuflar-se no meio da vegetação.
+                                            A codorniz é uma ave migradora parcial. Como tal, as suas asas são compridas e estreitas em relação ao corpo, estando perfeitamente adaptadas a voos de longas distâncias, como acontece nos movimentos nómadas ou erráticos e nas migrações intercontinentais.
+                                            A distinção entre sexos pode ser feita através da plumagem no peito e pela presença de uma mancha na garganta que só existe nos machos. Concretamente, o peito das fêmeas apresenta penas de cor pálida e salpicadas de manchas escuras, enquanto o dos machos apresenta penas de cor vermelho-ferrugem uniforme e sem manchas escuras. Ao nível da garganta, o macho adulto apresenta uma mancha escura longitudinal que se prolonga para ambos os lados e, com a idade, vai tomando uma forma que faz lembrar uma âncora." 
                                    FontSize="16" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"/>
                                     </StackLayout>
                                 </toolkit:Expander>
@@ -67,7 +67,7 @@
                                 <!-- Perdiz-Vermelha -->
                                 <toolkit:Expander>
                                     <toolkit:Expander.Header>
-                                        <Label Text="Perdiz-Vermelha" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="> Perdiz-Vermelha" FontSize="18" FontAttributes="Bold"/>
                                     </toolkit:Expander.Header>
                                     <StackLayout>
                                         <Grid ColumnDefinitions="*,*" RowSpacing="10">
@@ -75,14 +75,14 @@
                                             <Image Source="perdiz2.png" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" Grid.Column="1" />
                                         </Grid>
                                         <Label Text="A perdiz-vermelha é uma ave terrestre sedentária pertencente à família Phasianidae, ordem Galliformes, que inclui também as codornizes e os faisões.
-                Com o seu aspeto de galináceo de corpo arredondado, é uma excelente andarilha, de porte médio, rondando os 35 a 40 cm de comprimento. O bico e as patas são vermelhos, assim como o anel ocular, daí o nome de perdiz-vermelha. Tem uma plumagem de cor parda acastanhada na zona dorsal do corpo e cabeça e a sua zona ventral apresenta um tom acinzentado. Apresenta uma linha preta que contorna a porção branca da cabeça e desce até ao peito, onde forma um colar negro característico da espécie, de donde irradiam estrias da mesma cor que salpicam o cinzento do peito. Os flancos são caracteristicamente estriados de castanho e branco, que ajudam a camuflar-se no chão. O dimorfismo sexual é pouco acentuado nesta espécie, contudo subsistem algumas características que, em observação simultânea, permitem distinguir os machos das fêmeas com relativa segurança:
-                •	Geralmente, o macho é maior e mais pesado do que a fêmea, com um peso médio de 483 g e 395 g para o macho e fêmea, respetivamente.
-                •	Normalmente, os machos têm também uma cabeça mais volumosa.
-                •	Os machos têm os tarsos mais compridos e grossos, esporões com base larga e arredondada, enquanto as fêmeas apresentam tarsos mais curtos e delgados e, quando desenvolvem esporões, estes têm a base estreita e são bicudos.
-                Os juvenis (menos de 1 ano) são essencialmente acastanhados e podem distinguir-se dos animais adultos pela observação das rémiges primárias (i.e., as dez penas da extremidade da asa):
-                •	O juvenil inicia a muda durante o primeiro mês de vida, a qual se prolonga até outubro e novembro, porém não ocorre substituição das últimas duas rémiges. Estas duas penas caracterizam-se por uma extremidade pontiaguda que pode apresentar uma pequena pinta branca.
-                •	O adulto inicia a muda de todas as rémiges primárias duas ou três semanas antes dos juvenis e as suas duas últimas penas, independentemente de já terem sido mudadas ou não, têm a extremidade arredondada.
-                A perdiz-vermelha é uma espécie cinegética de caça menor com estatuto considerado pouco preocupante (LC), pela União Internacional da Conservação da Natureza, embora no presente se verifique uma tendência de declínio populacional desta espécie." 
+                                            Com o seu aspeto de galináceo de corpo arredondado, é uma excelente andarilha, de porte médio, rondando os 35 a 40 cm de comprimento. O bico e as patas são vermelhos, assim como o anel ocular, daí o nome de perdiz-vermelha. Tem uma plumagem de cor parda acastanhada na zona dorsal do corpo e cabeça e a sua zona ventral apresenta um tom acinzentado. Apresenta uma linha preta que contorna a porção branca da cabeça e desce até ao peito, onde forma um colar negro característico da espécie, de donde irradiam estrias da mesma cor que salpicam o cinzento do peito. Os flancos são caracteristicamente estriados de castanho e branco, que ajudam a camuflar-se no chão. O dimorfismo sexual é pouco acentuado nesta espécie, contudo subsistem algumas características que, em observação simultânea, permitem distinguir os machos das fêmeas com relativa segurança:
+                                            •	Geralmente, o macho é maior e mais pesado do que a fêmea, com um peso médio de 483 g e 395 g para o macho e fêmea, respetivamente.
+                                            •	Normalmente, os machos têm também uma cabeça mais volumosa.
+                                            •	Os machos têm os tarsos mais compridos e grossos, esporões com base larga e arredondada, enquanto as fêmeas apresentam tarsos mais curtos e delgados e, quando desenvolvem esporões, estes têm a base estreita e são bicudos.
+                                            Os juvenis (menos de 1 ano) são essencialmente acastanhados e podem distinguir-se dos animais adultos pela observação das rémiges primárias (i.e., as dez penas da extremidade da asa):
+                                            •	O juvenil inicia a muda durante o primeiro mês de vida, a qual se prolonga até outubro e novembro, porém não ocorre substituição das últimas duas rémiges. Estas duas penas caracterizam-se por uma extremidade pontiaguda que pode apresentar uma pequena pinta branca.
+                                            •	O adulto inicia a muda de todas as rémiges primárias duas ou três semanas antes dos juvenis e as suas duas últimas penas, independentemente de já terem sido mudadas ou não, têm a extremidade arredondada.
+                                            A perdiz-vermelha é uma espécie cinegética de caça menor com estatuto considerado pouco preocupante (LC), pela União Internacional da Conservação da Natureza, embora no presente se verifique uma tendência de declínio populacional desta espécie." 
                                    FontSize="16" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"/>
                                     </StackLayout>
                                 </toolkit:Expander>
@@ -90,13 +90,13 @@
                         </toolkit:Expander>
                         <toolkit:Expander>
                             <toolkit:Expander.Header>
-                                <Label Text="Mamíferos Cinegéticos" FontSize="20" FontAttributes="Italic" Margin="0,20,0,5"/>
+                                <Label Text="> Mamíferos Cinegéticos" FontSize="20" FontAttributes="Bold" Margin="0,20,0,5"/>
                             </toolkit:Expander.Header>
-                            <StackLayout>
+                            <StackLayout Padding="20" Spacing="40">
                                 <!-- Javali -->
                                 <toolkit:Expander>
                                     <toolkit:Expander.Header>
-                                        <Label Text="Javali" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="> Javali" FontSize="18" FontAttributes="Bold"/>
                                     </toolkit:Expander.Header>
                                     <StackLayout>
                                         <Label Text="O javali é um mamífero selvagem muito comum em Portugal, conhecido pelo seu corpo robusto, pelagem escura e presas desenvolvidas. Habita zonas florestais e é uma espécie cinegética de grande porte." 
@@ -110,9 +110,14 @@
             </StackLayout>
         </ScrollView>
         <Label Grid.Row="1"
-               Text="Para Mais Informações: http://especiescinegeticas.pt/areas-acao/especies-cinegeticas"
-               TextColor="Blue"
-               FontAttributes="Italic"
+               Text="Para Mais Informações:
+               
+               
+               
+               
+               http://especiescinegeticas.pt/areas-acao/especies-cinegeticas"
+               TextColor="Black"
+               FontAttributes="Bold"
                HorizontalOptions="Center"
                Margin="0,10,0,10">
             <Label.GestureRecognizers>

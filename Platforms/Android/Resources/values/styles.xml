@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+	<style name="MainTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+		<item name="colorOnPrimary">#FFFFFF</item>
+		<item name="colorSecondary">@color/colorAccent</item>
+		<item name="colorOnSecondary">#000000</item>
+		<item name="android:textColorPrimary">#000000</item>
+		<item name="android:windowBackground">@android:color/white</item>
+	</style>
+</resources>

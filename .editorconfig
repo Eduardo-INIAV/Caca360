@@ -8,3 +8,6 @@ dotnet_diagnostic.CS0618.severity = none
 
 # CS8604: Possível argumento de referência nula.
 dotnet_diagnostic.CS8604.severity = none
+
+# CA1050: Declarar tipos em namespaces
+dotnet_diagnostic.CA1050.severity = none

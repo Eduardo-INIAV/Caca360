@@ -5,6 +5,8 @@ using caca360.Services;
 using caca360.ViewModels;
 using CommunityToolkit.Maui;
 
+
+
 namespace caca360;
 public static class MauiProgram
 {
@@ -36,6 +38,16 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<MainViewModel>();
         builder.Services.AddTransient<InfosViewModel>();
+
+        //WebView
+    #if ANDROID
+        builder.ConfigureMauiHandlers(handlers =>
+        {
+            handlers.AddHandler<WebView, CustomWebViewHandler>();
+
+        });
+    #endif
+
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();

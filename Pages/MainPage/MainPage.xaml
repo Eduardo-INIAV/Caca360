@@ -7,18 +7,6 @@
              Title=""
              BackgroundImageSource="fundo.png">
 
-    <ContentPage.Resources>
-        <Style x:Key="SquareBlueButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Blue" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="20" />      <!-- Cantos arredondados -->
-            <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="HorizontalOptions" Value="Fill" />
-            <Setter Property="VerticalOptions" Value="Fill" />
-        </Style>
-    </ContentPage.Resources>
-
-
     <Grid HorizontalOptions="Fill" VerticalOptions="Fill" RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -56,8 +44,8 @@
             <Image
             Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
             Source="logo.png"
-            HeightRequest="100"
-            WidthRequest="100"
+            HeightRequest="120"
+            WidthRequest="120"
             HorizontalOptions="Start"
             VerticalOptions="Start"
             Margin="20,10,0,0" />
@@ -66,14 +54,15 @@
             <Label
             Grid.Row="1" Grid.Column="1"
             Text="Bem-vindo ao Caça 360"
-            FontSize="18"
+            FontSize="20"
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            Margin="0,110,90,16" />
+            Margin="0,120,150,0" />
         </Grid>
         
         <Grid Grid.Row="1" ColumnSpacing="15" RowSpacing="15"
-              HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15">
+              HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300"
+              HeightRequest="500" Padding="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -85,12 +74,124 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Text="Ir para Dashboard" Command="{Binding NavigateToDashboardCommand}" Style="{StaticResource SquareBlueButton}" />
-            <Button Grid.Row="0" Grid.Column="1" Text="Ir para Abate" Command="{Binding NavigateToAbateCommand}" Style="{StaticResource SquareBlueButton}" />
-            <Button Grid.Row="1" Grid.Column="0" Text="Ir para Censos" Command="{Binding NavigateToCensosCommand}" Style="{StaticResource SquareBlueButton}" />
-            <Button Grid.Row="1" Grid.Column="1" Text="Ir para Profile" Command="{Binding NavigateToProfileCommand}" Style="{StaticResource SquareBlueButton}" />
-            <Button Grid.Row="2" Grid.Column="0" Text="Ir para Zonas de Caça" Command="{Binding NavigateToZonasCommand}" Style="{StaticResource SquareBlueButton}" />
-            <Button Grid.Row="2" Grid.Column="1" Text="Ir para Informações" Command="{Binding NavigateToInfosCommand}" Style="{StaticResource SquareBlueButton}" />
+            <Border Grid.Row="0" Grid.Column="0"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="dashboard.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Dashboard"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDashboardCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Border Grid.Row="0" Grid.Column="1"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="abate.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Registo de Abate"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToAbateCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="0"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="censos.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Registo de Censos"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToCensosCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="1"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="zonas.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Zonas de Caça"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToZonasCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="0"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="perfil.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Perfil Utilizador"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="1"
+                    StrokeShape="RoundRectangle 20"
+                    Background="LightBlue"
+                    StrokeThickness="0"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <VerticalStackLayout Spacing="4" Padding="12" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="info.png" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center"/>
+                    <Label Text="Informações"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToInfosCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
         </Grid>
     </Grid>
 </ContentPage>

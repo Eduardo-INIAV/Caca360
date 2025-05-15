@@ -8,8 +8,8 @@
 
     <ContentPage.Resources>
         <Style x:Key="SquareBlueButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Blue" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="LightBlue" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="CornerRadius" Value="20" />
             <!-- Cantos arredondados -->
             <Setter Property="FontAttributes" Value="Bold" />

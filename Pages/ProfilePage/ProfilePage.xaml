@@ -14,7 +14,7 @@
             <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
             <Picker Title="Tipo de Zona de Caça" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
             <Entry Placeholder="Número" Keyboard="Numeric" Text="{Binding Number}" />
-            <Button Text="Salvar" Command="{Binding SaveCommand}" />
+            <Button Text="Salvar" TextColor="Black" BackgroundColor="LightBlue" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

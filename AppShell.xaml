@@ -6,11 +6,11 @@
     <ShellContent Title="Main Page" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     <ShellContent Title="Login" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     <TabBar>
-        <ShellContent Title="Dashboard" Route="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
-        <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" />
-        <ShellContent Title="Censos" Route="Censos" ContentTemplate="{DataTemplate local:CensosPage}" />
-        <ShellContent Title="Perfil" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
-        <ShellContent Title="Zonas de Caça" Route="ZonasPage" ContentTemplate="{DataTemplate local:ZonasPage}" />
-        <ShellContent Title="Informações" Route="InfosPage" ContentTemplate="{DataTemplate local:InfosPage}" />
+        <ShellContent Title="Dashboard" Route="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" Icon="dashboard.png" />
+        <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" Icon="abate.png" />
+        <ShellContent Title="Censos" Route="Censos" ContentTemplate="{DataTemplate local:CensosPage}" Icon="censos.png" />
+        <ShellContent Title="Perfil" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" Icon="perfil.png" />
+        <ShellContent Title="Zonas de Caça" Route="ZonasPage" ContentTemplate="{DataTemplate local:ZonasPage}" Icon="zonas.png" />
+        <ShellContent Title="Informações" Route="InfosPage" ContentTemplate="{DataTemplate local:InfosPage}" Icon="info.png" />
     </TabBar>
 </Shell>
