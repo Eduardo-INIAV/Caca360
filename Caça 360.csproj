@@ -81,6 +81,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Firebase.Auth" Version="1.0.0" />
 		<PackageReference Include="Firebase.Database" Version="1.0.0">
 			<NoWarn>$(NoWarn);NU1701</NoWarn>
@@ -90,8 +91,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\CaesPage\CaesPage.xaml.cs">
+	    <DependentUpon>CaesPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\CensosPage\CensosPage.xaml.cs">
 	    <DependentUpon>CensosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\LagoPage\LagoPage.xaml.cs">
+	    <DependentUpon>LagoPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\MamiferosPage\MamiferosPage.xaml.cs">
+	    <DependentUpon>MamiferosPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -99,10 +109,22 @@
 	  <MauiXaml Update="Pages\AbatePage\AbatePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\AnimalPage\AnimalPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AvesPage\AvesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CaesPage\CaesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DashboardPage\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\InfosPage\InfosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LagoPage\LagoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage\LoginPage.xaml">
@@ -112,6 +134,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\MainPage\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MamiferosPage\MamiferosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ProfilePage\ProfilePage.xaml">

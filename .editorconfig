@@ -1,13 +1,13 @@
 ﻿[*.cs]
 
-# CS8602: Desreferência de uma referência possivelmente nula.
-dotnet_diagnostic.CS8602.severity = none
-
 # CS0618: O tipo ou membro é obsoleto
 dotnet_diagnostic.CS0618.severity = none
+
+# CS8602: Desreferência de uma referência possivelmente nula.
+dotnet_diagnostic.CS8602.severity = none
 
 # CS8604: Possível argumento de referência nula.
 dotnet_diagnostic.CS8604.severity = none
 
-# CA1050: Declarar tipos em namespaces
-dotnet_diagnostic.CA1050.severity = none
+# IDE0028: Simplificar a inicialização de coleção
+dotnet_diagnostic.IDE0028.severity = none

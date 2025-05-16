@@ -5,8 +5,6 @@ using caca360.Services;
 using caca360.ViewModels;
 using CommunityToolkit.Maui;
 
-
-
 namespace caca360;
 public static class MauiProgram
 {
@@ -37,17 +35,11 @@ public static class MauiProgram
         builder.Services.AddTransient<RegisterViewModel>();
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<MainViewModel>();
-        builder.Services.AddTransient<InfosViewModel>();
-
-        //WebView
-    #if ANDROID
-        builder.ConfigureMauiHandlers(handlers =>
-        {
-            handlers.AddHandler<WebView, CustomWebViewHandler>();
-
-        });
-    #endif
-
+        builder.Services.AddTransient<CategoriasViewModel>();
+        builder.Services.AddTransient<MamiferosViewModel>();
+        builder.Services.AddTransient<CaesViewModel>();
+        builder.Services.AddTransient<AvesViewModel>();
+        builder.Services.AddTransient<LagoViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -59,6 +51,11 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfilePage>();
         builder.Services.AddTransient<ZonasPage>();
         builder.Services.AddTransient<InfosPage>();
+        builder.Services.AddTransient<AnimalPage>();
+        builder.Services.AddTransient<AvesPage>();
+        builder.Services.AddTransient<MamiferosPage>();
+        builder.Services.AddTransient<CaesPage>();
+        builder.Services.AddTransient<LagoPage>();
 
         var app = builder.Build();
         ServiceProvider = app.Services;

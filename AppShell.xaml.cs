@@ -13,6 +13,14 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(ZonasPage), typeof(ZonasPage));
         Routing.RegisterRoute(nameof(InfosPage), typeof(InfosPage));
+        Routing.RegisterRoute(nameof(AnimalPage), typeof(AnimalPage));
+        Routing.RegisterRoute(nameof(CaesPage), typeof(CaesPage));
+        Routing.RegisterRoute(nameof(AvesPage), typeof(AvesPage));
+        Routing.RegisterRoute(nameof(MamiferosPage), typeof(MamiferosPage));
+        Routing.RegisterRoute(nameof(LagoPage), typeof(LagoPage));
+
+
+
     }
 
     protected override bool OnBackButtonPressed()

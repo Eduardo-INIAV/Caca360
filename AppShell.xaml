@@ -5,6 +5,8 @@
        FlyoutBehavior="Disabled">
     <ShellContent Title="Main Page" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     <ShellContent Title="Login" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <ShellContent Route="AnimalPage" ContentTemplate="{DataTemplate local:AnimalPage}" />
+ 
     <TabBar>
         <ShellContent Title="Dashboard" Route="Dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" Icon="dashboard.png" />
         <ShellContent Title="Abate" Route="Abate" ContentTemplate="{DataTemplate local:AbatePage}" Icon="abate.png" />
