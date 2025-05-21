@@ -25,12 +25,12 @@ public partial class AnimalPage : ContentPage
     public AnimalPage()
     {
         InitializeComponent();
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
     }
 
     private async void OnPerfilButtonClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("EspeciesPage");
+        await Shell.Current.GoToAsync("//EspeciesPage");
     }
 
     protected override bool OnBackButtonPressed()

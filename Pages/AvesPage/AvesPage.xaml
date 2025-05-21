@@ -4,7 +4,8 @@
              x:DataType="viewModels:AvesViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.AvesPage"
-             Title="Aves">
+             Title="Aves"
+             BackgroundImageSource="biodiversidade.png">
 
     <ContentPage.BindingContext>
         <viewModels:AvesViewModel />
@@ -21,7 +22,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Border StrokeShape="RoundRectangle 20"
-                     Background="LightBlue"
+                     Background="#95FFFFFF"
                      StrokeThickness="0"
                      Padding="0"
                      Margin="0,10"
@@ -29,7 +30,7 @@
                      VerticalOptions="Fill">
                         <HorizontalStackLayout Padding="10" Spacing="12" VerticalOptions="Center">
                             <Border
-                                 Stroke="Gray"
+                                 Stroke="White"
                                  StrokeThickness="2"
                                  StrokeShape="RoundRectangle 16"
                                  Background="White"

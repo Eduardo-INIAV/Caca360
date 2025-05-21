@@ -4,7 +4,8 @@
              x:DataType="viewModels:CaesViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.CaesPage"
-             Title="Caes">
+             Title="Caes"
+             BackgroundImageSource="cacadorcao.png">
 
     <ContentPage.BindingContext>
         <viewModels:CaesViewModel />
@@ -22,7 +23,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Border StrokeShape="RoundRectangle 20"
-                 Background="LightBlue"
+                 Background="#95FFFFFF"
                  StrokeThickness="0"
                  Padding="0"
                  Margin="0,10"
@@ -34,11 +35,11 @@
                              StrokeThickness="2"
                              StrokeShape="RoundRectangle 16"
                              Background="White"
-                             WidthRequest="70"
-                             HeightRequest="80"
+                             WidthRequest="100"
+                             HeightRequest="85"
                              VerticalOptions="Center"
                              HorizontalOptions="Center">
-                                <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Image Source="{Binding Imagem}" WidthRequest="120" HeightRequest="120" VerticalOptions="Center" HorizontalOptions="Center"/>
                             </Border>
                             <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center"/>
                         </HorizontalStackLayout>

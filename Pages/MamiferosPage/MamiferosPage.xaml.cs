@@ -9,4 +9,11 @@ public partial class MamiferosPage : ContentPage
         BindingContext = new MamiferosViewModel();
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//EspeciePage");
+        return true;
+    }
+
 }

@@ -4,7 +4,8 @@
              x:DataType="viewModels:LagoViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.LagoPage"
-             Title="Lagomorfos">
+             Title="Lagomorfos"
+             BackgroundImageSource="biodiversidade.png">
 
     <ContentPage.BindingContext>
         <viewModels:LagoViewModel />
@@ -22,7 +23,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Border StrokeShape="RoundRectangle 20"
-                 Background="LightBlue"
+                 Background="#95FFFFFF"
                  StrokeThickness="0"
                  Padding="0"
                  Margin="0,10"
@@ -30,10 +31,10 @@
                  VerticalOptions="Fill">
                         <HorizontalStackLayout Padding="10" Spacing="12" VerticalOptions="Center">
                             <Border
-                             Stroke="Gray"
+                             Stroke="White"
                              StrokeThickness="2"
                              StrokeShape="RoundRectangle 16"
-                             Background="White"
+                             Background="Transparent"
                              WidthRequest="70"
                              HeightRequest="80"
                              VerticalOptions="Center"

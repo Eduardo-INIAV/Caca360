@@ -4,7 +4,6 @@
              Title="">
 
     <VerticalStackLayout>
-        <Label Text="Registo Obrigatório de Abate" FontSize="22" Padding="10" />
         <WebView x:Name="AbateSurveyWebView" HeightRequest="800" />
     </VerticalStackLayout>
 </ContentPage>

@@ -9,13 +9,13 @@ public partial class NoticiasPage : ContentPage
         InitializeComponent();
 
         if (BindingContext is NoticiasViewModel vm)
-            _ = vm.BuscarNoticiasAsync("Caça animal em portugal");
+            _ = vm.BuscarNoticiasAsync("Caça e caçadores em portugal");
     }
 
     private async void OnBuscarClicked(object sender, EventArgs e)
     {
         if (BindingContext is NoticiasViewModel vm)
-            await vm.BuscarNoticiasAsync("Caça animal em portugal");
+            await vm.BuscarNoticiasAsync("Caça e caçadores em portugal");
     }
 
     private async void OnAbrirNoticia(object sender, EventArgs e)
