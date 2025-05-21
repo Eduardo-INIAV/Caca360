@@ -1,14 +1,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:caca360.ViewModels"
+             x:DataType="viewModels:NoticiasViewModel"
              x:Class="caca360.NoticiasPage"
-             Title="">
+             Title="Notícias">
+    
+    <ContentPage.BindingContext>
+        <viewModels:NoticiasViewModel />
+    </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <Label Text="Noticias de Caça" FontSize="22" Padding="10" />
-        <WebView x:Name="NoticiasWebView" HeightRequest="800" />
-    </VerticalStackLayout>
-
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Button Text="Buscar por Caça" Clicked="OnBuscarClicked"/>
+            <CollectionView ItemsSource="{Binding Noticias}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewModels:Noticia">
+                        <Border Margin="0,10" StrokeShape="RoundRectangle 8" Background="White" Stroke="LightGray" StrokeThickness="1">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding ImageUrl}" HeightRequest="160" Aspect="AspectFill"/>
+                                <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Description}" FontSize="12"/>
+                                <Button Text="Ver mais" CommandParameter="{Binding Url}" Clicked="OnAbrirNoticia"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -6,9 +6,16 @@ public partial class DashboardPage : ContentPage
     {
         InitializeComponent();
 
-        var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/90bec55361f245a4bf2d238159e1b7fd";
+        var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/0bbdae73f4184da5b88fe55d65b0394e";
         ArcGisWebView.Source = surveyUrl;
 
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+    }
+
+
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//MainPage");
+        return true;
     }
 }

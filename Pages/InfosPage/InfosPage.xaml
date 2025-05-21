@@ -34,7 +34,7 @@
                                 Stroke="Gray"
                                 StrokeThickness="2"
                                 StrokeShape="RoundRectangle 16"
-                                Background="Transparent"
+                                Background="Gray"
                                 WidthRequest="100"
                                 HeightRequest="75"
                                 VerticalOptions="Center"

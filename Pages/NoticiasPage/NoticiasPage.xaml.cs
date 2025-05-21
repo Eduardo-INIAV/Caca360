@@ -1,4 +1,6 @@
-﻿namespace caca360;
+﻿using caca360.ViewModels;
+
+namespace caca360;
 
 public partial class NoticiasPage : ContentPage
 {
@@ -6,10 +8,19 @@ public partial class NoticiasPage : ContentPage
     {
         InitializeComponent();
 
-        var noticiasUrl = "https://www.dn.pt/topic/ca%C3%A7a";
-        NoticiasWebView.Source = noticiasUrl;
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+        if (BindingContext is NoticiasViewModel vm)
+            _ = vm.BuscarNoticiasAsync("Caça animal em portugal");
+    }
 
+    private async void OnBuscarClicked(object sender, EventArgs e)
+    {
+        if (BindingContext is NoticiasViewModel vm)
+            await vm.BuscarNoticiasAsync("Caça animal em portugal");
+    }
+
+    private async void OnAbrirNoticia(object sender, EventArgs e)
+    {
+        if (sender is Button btn && btn.CommandParameter is string url)
+            await Launcher.Default.OpenAsync(url);
     }
 }
-
