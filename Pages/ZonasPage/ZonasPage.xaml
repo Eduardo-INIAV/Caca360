@@ -3,7 +3,11 @@
              x:Class="caca360.ZonasPage"
              Title="Zonas de Caça">
 
-	<VerticalStackLayout>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout>
 		<Label Text="Mapa das Zonas de Caça" FontSize="22" Padding="10" />
 		<WebView x:Name="MapWebView" HeightRequest="800" />
 	</VerticalStackLayout>

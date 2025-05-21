@@ -8,5 +8,7 @@ public partial class DashboardPage : ContentPage
 
         var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/90bec55361f245a4bf2d238159e1b7fd";
         ArcGisWebView.Source = surveyUrl;
+
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 }

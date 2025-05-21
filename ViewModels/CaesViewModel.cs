@@ -36,8 +36,8 @@ public partial class CaesViewModel : ObservableObject
     {
         Caes = new ObservableCollection<Animal>
         {
-            new() { Nome = "Papagaio", Descricao = "O papagaio é uma ave colorida.", Categoria = "Caes", Imagem = "papagaio.png" },
-            new() { Nome = "Águia", Descricao = "A águia tem visão aguçada.", Categoria = "Caes", Imagem = "aguia.png" }
+            new() { Nome = "Springer Inglês", Descricao = "A raça Springer Inglês têm o corpo forte e musculoso, e foram criados dessa forma para caçarem com os humanos, pelos quais a raça tem muito apreço e anseio em agradar.\r\n \r\nO cão foi desenvolvido para que durante a caça, ele levantasse a presa para ser caçada. Assim como o Pointer, podia trabalhar juntamente com outros cães. Hoje em dia essa raça, além de localizar e levantar a presa, traz o abate para a mão do caçador.", Categoria = "Caes", Imagem = "springer1.png" },
+            new() { Nome = "Pointers", Descricao = "Os Pointers são cães cheios de energia, agilidade e ótimos para corridas, ou seja, possuem qualidades incríveis para uma boa caçada. Não só para isso, mas também como companheiro.\r\n \r\nNo passado a raça caçava juntamente com outros cachorros. O seu papel, como o nome sugere, era de apontar a caça para que outros cães a capturassem. Após 1700, com a popularização da caça de aves, o Pointer ficou ainda mais famoso como cão para caça.", Categoria = "Caes", Imagem = "pointer1.png" }
         };
 
         SelecionarCaesCommand = new Command<Animal>(async animal =>

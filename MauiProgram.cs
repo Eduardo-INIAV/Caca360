@@ -40,6 +40,8 @@ public static class MauiProgram
         builder.Services.AddTransient<CaesViewModel>();
         builder.Services.AddTransient<AvesViewModel>();
         builder.Services.AddTransient<LagoViewModel>();
+        builder.Services.AddTransient<EspeciesViewModel>();
+        builder.Services.AddTransient<ArmasViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -56,6 +58,10 @@ public static class MauiProgram
         builder.Services.AddTransient<MamiferosPage>();
         builder.Services.AddTransient<CaesPage>();
         builder.Services.AddTransient<LagoPage>();
+        builder.Services.AddTransient<EspeciesPage>();
+        builder.Services.AddTransient<ArmasPage>();
+        builder.Services.AddTransient<NoticiasPage>();
+        builder.Services.AddTransient<TempoPage>();
 
         var app = builder.Build();
         ServiceProvider = app.Services;

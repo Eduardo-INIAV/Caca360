@@ -7,5 +7,6 @@ public partial class AvesPage : ContentPage
     {
         InitializeComponent();
         BindingContext = new AvesViewModel();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 }

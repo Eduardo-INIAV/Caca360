@@ -91,6 +91,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\ArmasPage\ArmasPage.xaml.cs">
+	    <DependentUpon>ArmasPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\CaesPage\CaesPage.xaml.cs">
 	    <DependentUpon>CaesPage.xaml</DependentUpon>
 	  </Compile>
@@ -103,6 +106,12 @@
 	  <Compile Update="Pages\MamiferosPage\MamiferosPage.xaml.cs">
 	    <DependentUpon>MamiferosPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\NoticiasPage\NoticiasPage.xaml.cs">
+	    <DependentUpon>NoticiasPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TempoPage\TempoPage.xaml.cs">
+	    <DependentUpon>TempoPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -112,6 +121,9 @@
 	  <MauiXaml Update="Pages\AnimalPage\AnimalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ArmasPage\ArmasPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AvesPage\AvesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -119,6 +131,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DashboardPage\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\EspeciesPage\EspeciesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\InfosPage\InfosPage.xaml">
@@ -139,7 +154,13 @@
 	  <MauiXaml Update="Pages\MamiferosPage\MamiferosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\NoticiasPage\NoticiasPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\ProfilePage\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TempoPage\TempoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ZonasPage\ZonasPage.xaml">

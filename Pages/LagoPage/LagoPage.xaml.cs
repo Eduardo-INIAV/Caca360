@@ -7,5 +7,6 @@ public partial class LagoPage : ContentPage
     {
         InitializeComponent();
         BindingContext = new LagoViewModel();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 }

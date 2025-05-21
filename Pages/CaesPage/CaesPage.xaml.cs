@@ -7,5 +7,6 @@ public partial class CaesPage : ContentPage
     {
         InitializeComponent();
         BindingContext = new CaesViewModel();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 }

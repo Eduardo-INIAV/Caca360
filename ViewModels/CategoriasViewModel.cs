@@ -6,11 +6,11 @@ namespace caca360.ViewModels;
 
 public partial class CategoriasViewModel : ObservableObject
 {
-    public ObservableCollection<string> Categorias { get; }
+    public ObservableCollection<Categoria> Categorias { get; }
 
-    private string? _categoriaSelecionada;
+    private Categoria? _categoriaSelecionada;
 
-    public string? CategoriaSelecionada
+    public Categoria? CategoriaSelecionada
     {
         get => _categoriaSelecionada;
         set
@@ -21,8 +21,8 @@ public partial class CategoriasViewModel : ObservableObject
                 if (_categoriaSelecionada != null)
                 {
                     SelecionarCategoria(_categoriaSelecionada);
-                    _categoriaSelecionada = null; // permite selecionar novamente
-                    OnPropertyChanged(nameof(CategoriaSelecionada)); // necessário se não estiveres a usar [ObservableProperty]
+                    _categoriaSelecionada = null;
+                    OnPropertyChanged(nameof(CategoriaSelecionada));
                 }
             }
         }
@@ -30,31 +30,35 @@ public partial class CategoriasViewModel : ObservableObject
 
     public CategoriasViewModel()
     {
-        Categorias = new ObservableCollection<string>
+        Categorias = new ObservableCollection<Categoria>
         {
-            "Aves",
-            "Cães",
-            "Mamíferos",
-            "Lagos"
+            new() { Nome = "Espécies Cinegéticas", Imagem = "todos.png" },
+            new() { Nome = "Cães", Imagem = "caes1.png" },
+            new() { Nome = "Armas", Imagem = "cacadeira1.png" },
+            new() { Nome = "Noticias", Imagem = "noticias1.png" },
+            new() { Nome = "Tempo", Imagem = "meteo2.png" }
+
         };
     }
 
-    private async void SelecionarCategoria(string categoria)
+    private async void SelecionarCategoria(Categoria categoria)
     {
-        // Exemplo de navegação, ajusta conforme as tuas rotas
-        switch (categoria)
+        switch (categoria.Nome)
         {
-            case "Aves":
-                await Shell.Current.GoToAsync(nameof(AvesPage));
+            case "Espécies Cinegéticas":
+                await Shell.Current.GoToAsync(nameof(EspeciesPage));
                 break;
             case "Cães":
                 await Shell.Current.GoToAsync(nameof(CaesPage));
                 break;
-            case "Mamíferos":
-                await Shell.Current.GoToAsync(nameof(MamiferosPage));
+            case "Armas":
+                await Shell.Current.GoToAsync(nameof(ArmasPage));
                 break;
-            case "Lagos":
-                await Shell.Current.GoToAsync(nameof(LagoPage));
+            case "Noticias":
+                await Shell.Current.GoToAsync(nameof(NoticiasPage));
+                break;
+            case "Tempo":
+                await Shell.Current.GoToAsync(nameof(TempoPage));
                 break;
         }
     }

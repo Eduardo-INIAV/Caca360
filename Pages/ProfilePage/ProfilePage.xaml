@@ -5,6 +5,11 @@
              x:Class="caca360.ProfilePage"
              Title=""
              BackgroundImageSource="fundo.png">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 			<Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />

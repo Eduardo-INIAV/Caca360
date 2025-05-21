@@ -4,7 +4,11 @@
              x:Class="caca360.RegisterPage"
              x:DataType="viewModels:RegisterViewModel"
              Title="Registo">
-    
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+
     <VerticalStackLayout Padding="20" Spacing="15">
         <Entry Placeholder="Nome de utilizador" Text="{Binding Username}" />
         <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />

@@ -18,17 +18,12 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(AvesPage), typeof(AvesPage));
         Routing.RegisterRoute(nameof(MamiferosPage), typeof(MamiferosPage));
         Routing.RegisterRoute(nameof(LagoPage), typeof(LagoPage));
-
+        Routing.RegisterRoute(nameof(EspeciesPage), typeof(EspeciesPage));
+        Routing.RegisterRoute(nameof(ArmasPage), typeof(ArmasPage));
+        Routing.RegisterRoute(nameof(NoticiasPage), typeof(NoticiasPage));
+        Routing.RegisterRoute(nameof(TempoPage), typeof(TempoPage));
 
 
     }
-
-    protected override bool OnBackButtonPressed()
-    {
-        // Navega para a MainPage
-        Shell.Current.GoToAsync("//MainPage");
-        return true; // Impede o comportamento padrão do botão "back"
-    }
-
 
 }

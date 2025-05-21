@@ -8,5 +8,12 @@ public partial class ProfilePage : ContentPage
     {
         InitializeComponent();
         BindingContext = new ProfileViewModel();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+    }
+
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//MainPage");
+        return true;
     }
 }

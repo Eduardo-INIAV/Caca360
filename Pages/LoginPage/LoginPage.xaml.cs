@@ -25,4 +25,11 @@ public partial class LoginPage : ContentPage
         var registerPage = MauiProgram.ServiceProvider.GetRequiredService<RegisterPage>();
         await Navigation.PushAsync(registerPage);
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        // Impede voltar da tela de login
+        return true;
+    }
+
 }

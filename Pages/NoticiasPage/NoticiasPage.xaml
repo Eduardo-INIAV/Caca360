@@ -1,0 +1,14 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="caca360.NoticiasPage"
+             Title="">
+
+    <VerticalStackLayout>
+        <Label Text="Noticias de Caça" FontSize="22" Padding="10" />
+        <WebView x:Name="NoticiasWebView" HeightRequest="800" />
+    </VerticalStackLayout>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+</ContentPage>

@@ -5,13 +5,14 @@ public partial class InfosPage : ContentPage
     public InfosPage()
     {
         InitializeComponent();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 
     private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (BindingContext is ViewModels.CategoriasViewModel vm &&
             e.CurrentSelection.Count > 0 &&
-            e.CurrentSelection[0] is string categoria)
+            e.CurrentSelection[0] is caca360.Models.Categoria categoria)
         {
             vm.CategoriaSelecionada = categoria;
         }
@@ -19,5 +20,12 @@ public partial class InfosPage : ContentPage
         // Limpar a seleção visual para permitir nova seleção
         ((CollectionView)sender).SelectedItem = null;
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//MainPage");
+        return true;
+    }
+
 
 }

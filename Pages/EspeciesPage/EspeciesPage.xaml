@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:caca360.ViewModels"
+             x:DataType="viewModels:EspeciesViewModel"
+             xmlns:models="clr-namespace:caca360.Models"
+             x:Class="caca360.EspeciesPage"
+             Title="Especies"
+             BackgroundImageSource="fundo.png">
+
+    <ContentPage.BindingContext>
+        <viewModels:EspeciesViewModel />
+    </ContentPage.BindingContext>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20">
+            <CollectionView ItemsSource="{Binding Especies}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Especies">
+                        <Border StrokeShape="RoundRectangle 20"
+                            Background="LightBlue"
+                            StrokeThickness="0"
+                            Padding="0"
+                            Margin="0,10"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                            <HorizontalStackLayout Padding="10" Spacing="12" VerticalOptions="Center">
+                                <Border
+                                        Stroke="Gray"
+                                        StrokeThickness="2"
+                                        StrokeShape="RoundRectangle 16"
+                                        Background="White"
+                                        WidthRequest="70"
+                                        HeightRequest="80"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+                                    <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                </Border>
+                                <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
