@@ -11,5 +11,12 @@ public partial class TempoPage : ContentPage
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
 
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//CategoriaPage");
+        return true;
+    }
+
 }
 

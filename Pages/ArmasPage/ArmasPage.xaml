@@ -4,7 +4,8 @@
              x:DataType="viewModels:ArmasViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.ArmasPage"
-             Title="Armas">
+             Title="Armas"
+             BackgroundImageSource="campo.png">
 
     <ContentPage.BindingContext>
         <viewModels:ArmasViewModel />
@@ -21,7 +22,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Border StrokeShape="RoundRectangle 20"
-                 Background="LightBlue"
+                 Background="#95ffffff"
                  StrokeThickness="0"
                  Padding="0"
                  Margin="0,10"

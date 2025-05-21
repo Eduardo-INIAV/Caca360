@@ -3,7 +3,8 @@
              xmlns:viewModels="clr-namespace:caca360.ViewModels"
              x:DataType="viewModels:NoticiasViewModel"
              x:Class="caca360.NoticiasPage"
-             Title="Notícias">
+             Title="Notícias"
+             BackgroundImageSource="cacador.png">
     
     <ContentPage.BindingContext>
         <viewModels:NoticiasViewModel />
@@ -11,16 +12,16 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="20">
-            <Button Text="Buscar por Caça" Clicked="OnBuscarClicked"/>
+            <Button Text="Buscar por Caça" Clicked="OnBuscarClicked" Background="LightBlue" TextColor="Black"/>
             <CollectionView ItemsSource="{Binding Noticias}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="viewModels:Noticia">
                         <Border Margin="0,10" StrokeShape="RoundRectangle 8" Background="White" Stroke="LightGray" StrokeThickness="1">
                             <VerticalStackLayout>
                                 <Image Source="{Binding ImageUrl}" HeightRequest="160" Aspect="AspectFill"/>
-                                <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" />
                                 <Label Text="{Binding Description}" FontSize="12"/>
-                                <Button Text="Ver mais" CommandParameter="{Binding Url}" Clicked="OnAbrirNoticia"/>
+                                <Button Text="Ver mais" CommandParameter="{Binding Url}" Clicked="OnAbrirNoticia" Background="LightBlue" TextColor="Black"/>
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>

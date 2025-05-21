@@ -8,6 +8,8 @@ public partial class App : Application
 
         // Define o AppShell como a página principal
         MainPage = new AppShell();
+
+        Application.Current.UserAppTheme = AppTheme.Light;
     }
 
     protected override void OnStart()
