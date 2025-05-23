@@ -23,3 +23,6 @@ dotnet_diagnostic.IDE0090.severity = none
 
 # IDE0021: Usar o corpo do bloco para construtor
 dotnet_diagnostic.IDE0021.severity = none
+
+# CA1822: Marcar membros como estáticos
+dotnet_diagnostic.CA1822.severity = none

@@ -35,8 +35,8 @@
 
             <!-- Botões para escolher, tirar e remover foto -->
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
-                <Button Text="Escolher Foto" Command="{Binding PickPhotoCommand}" />
-                <Button Text="Tirar Foto" Command="{Binding TakePhotoCommand}" />
+                <Button Text="Escolher Foto" Command="{Binding PickPhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
+                <Button Text="Tirar Foto" Command="{Binding TakePhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
                 <Button Text="Remover Foto"
                         Command="{Binding RemovePhotoCommand}"
                         IsEnabled="{Binding ProfileImagePath, Converter={StaticResource StringNotEmptyToBoolConverter}}" />

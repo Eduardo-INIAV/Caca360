@@ -42,6 +42,18 @@ public partial class AnimalPage : ContentPage
         };
         ToolbarItems.Add(backButton);
     }
+    private async void OnLinkTapped(object sender, EventArgs e)
+    {
+        string url = "http://especiescinegeticas.pt/"; // muda para o link que quiseres
+        try
+        {
+            await Launcher.OpenAsync(url);
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Erro", "Não foi possível abrir o link.", "OK");
+        }
+    }
 
     private async void VoltarParaEspecie()
     {

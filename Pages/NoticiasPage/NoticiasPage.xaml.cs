@@ -7,6 +7,7 @@ public partial class NoticiasPage : ContentPage
     public NoticiasPage()
     {
         InitializeComponent();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
 
         if (BindingContext is NoticiasViewModel vm)
             _ = vm.BuscarNoticiasAsync("caçadores em portugal");

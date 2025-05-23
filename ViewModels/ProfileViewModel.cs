@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Media;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Storage;
 
 namespace caca360.ViewModels;
 
@@ -87,8 +90,12 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _profileImagePath;
         set
         {
-            _profileImagePath = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ProfileImagePath)));
+            if (_profileImagePath != value)
+            {
+                _profileImagePath = value;
+                Preferences.Default.Set(nameof(ProfileImagePath), value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ProfileImagePath)));
+            }
         }
     }
 
@@ -100,7 +107,9 @@ public partial class ProfileViewModel : INotifyPropertyChanged
 
     public ProfileViewModel()
     {
-        SaveCommand = new Command(SaveProfile);
+        _profileImagePath = Preferences.Default.Get(nameof(ProfileImagePath), string.Empty);
+
+        SaveCommand = new Command(async () => await SaveProfile());
         RemovePhotoCommand = new Command(RemovePhoto);
         PickPhotoCommand = new Command(async () => await PickPhotoAsync());
         TakePhotoCommand = new Command(async () => await TakePhotoAsync());
@@ -119,7 +128,9 @@ public partial class ProfileViewModel : INotifyPropertyChanged
 
             if (photo != null)
             {
-                ProfileImagePath = photo.FullPath ?? "";
+                var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
+                File.Copy(photo.FullPath, newPath, true);
+                ProfileImagePath = newPath;
             }
         }
         catch (Exception ex)
@@ -128,16 +139,29 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         }
     }
 
-    private async Task TakePhotoAsync()
+    public async Task TakePhotoAsync()
     {
         try
         {
-            var photo = await MediaPicker.CapturePhotoAsync();
-
-            if (photo != null)
+            await MainThread.InvokeOnMainThreadAsync(async () =>
             {
-                ProfileImagePath = photo.FullPath ?? "";
-            }
+                var photo = await MediaPicker.CapturePhotoAsync();
+
+                if (photo != null)
+                {
+                    var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
+                    File.Copy(photo.FullPath, newPath, true);
+                    ProfileImagePath = newPath;
+                }
+                else
+                {
+                    Console.WriteLine("Foto cancelada.");
+                }
+            });
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("Operação cancelada pelo utilizador.");
         }
         catch (Exception ex)
         {
@@ -145,7 +169,7 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         }
     }
 
-    private async void SaveProfile()
+    private async Task SaveProfile()
     {
         // Aqui colocas o teu código para salvar no Firebase ou outro serviço
         await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");

@@ -6,7 +6,7 @@ public partial class TempoPage : ContentPage
     {
         InitializeComponent();
 
-        var TempoUrl = "https://www.accuweather.com/pt/pt/oeiras/274023/weather-forecast/274023";
+        var TempoUrl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/";
         TempoWebView.Source = TempoUrl;
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
