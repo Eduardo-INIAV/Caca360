@@ -8,7 +8,27 @@ public partial class ZonasPage : ContentPage
 
         var surveyUrl = "https://portalgeo.iniav.pt/portal/home/webmap/viewer.html?webmap=cc2cc17065014b6baa1c04b5aac0b507";
         MapWebView.Source = surveyUrl;
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+        var backButton = new ToolbarItem
+        {
+            IconImageSource = "back_arrow.png",
+            Priority = 0,
+            Order = ToolbarItemOrder.Primary,
+            Command = new Command(() =>
+            {
+                BackButtonBehavior();
+            })
+        };
+        ToolbarItems.Add(backButton);
+    }
+
+    private void BackButtonBehavior()
+    {
+        // Faz a navegação para a página desejada
+        this.Dispatcher.Dispatch(async () =>
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+        });
+    
     }
     protected override bool OnBackButtonPressed()
     {

@@ -8,6 +8,7 @@ namespace caca360.ViewModels;
 public partial class AvesViewModel : ObservableObject
 {
     public ObservableCollection<Animal> Aves { get; }
+    public string Especie { get; } = "Aves";
 
     private Animal? _animalSelecionado= null!;
 
@@ -49,7 +50,7 @@ public partial class AvesViewModel : ObservableObject
                 return;
 
             // navega para página do animal
-            await Shell.Current.GoToAsync($"{nameof(AnimalPage)}?nome={animal.Nome}&descricao={animal.Descricao}&imagem={animal.Imagem}");
+            await Shell.Current.GoToAsync($"{nameof(AnimalPage)}?nome={animal.Nome}&descricao={animal.Descricao}&imagem={animal.Imagem}&especie={Especie}");
         });
     }
 

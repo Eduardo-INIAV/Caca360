@@ -1,10 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Maui.Media;
 
 namespace caca360.ViewModels;
 
-public class ProfileViewModel : INotifyPropertyChanged
+public partial class ProfileViewModel : INotifyPropertyChanged
 {
     private string _huntingLicense = string.Empty;
     private string _selectedType = string.Empty;
@@ -12,6 +15,7 @@ public class ProfileViewModel : INotifyPropertyChanged
     private string _age = string.Empty;
     private string _selectedHuntingZoneType = string.Empty;
     private string _number = string.Empty;
+    private string _profileImagePath = string.Empty;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -78,16 +82,72 @@ public class ProfileViewModel : INotifyPropertyChanged
         }
     }
 
+    public string ProfileImagePath
+    {
+        get => _profileImagePath;
+        set
+        {
+            _profileImagePath = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ProfileImagePath)));
+        }
+    }
+
+    // Comandos para o UI
     public ICommand SaveCommand { get; }
+    public ICommand RemovePhotoCommand { get; }
+    public ICommand PickPhotoCommand { get; }
+    public ICommand TakePhotoCommand { get; }
 
     public ProfileViewModel()
     {
         SaveCommand = new Command(SaveProfile);
+        RemovePhotoCommand = new Command(RemovePhoto);
+        PickPhotoCommand = new Command(async () => await PickPhotoAsync());
+        TakePhotoCommand = new Command(async () => await TakePhotoAsync());
+    }
+
+    private void RemovePhoto()
+    {
+        ProfileImagePath = string.Empty;
+    }
+
+    private async Task PickPhotoAsync()
+    {
+        try
+        {
+            var photo = await MediaPicker.PickPhotoAsync();
+
+            if (photo != null)
+            {
+                ProfileImagePath = photo.FullPath ?? "";
+            }
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao escolher a foto: {ex.Message}", "OK");
+        }
+    }
+
+    private async Task TakePhotoAsync()
+    {
+        try
+        {
+            var photo = await MediaPicker.CapturePhotoAsync();
+
+            if (photo != null)
+            {
+                ProfileImagePath = photo.FullPath ?? "";
+            }
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao tirar a foto: {ex.Message}", "OK");
+        }
     }
 
     private async void SaveProfile()
     {
-        // Salvar as informações no Firebase ou outro serviço
+        // Aqui colocas o teu código para salvar no Firebase ou outro serviço
         await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");
     }
 }

@@ -1,25 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:caca360.ViewModels"
+             xmlns:converters="clr-namespace:caca360.Converters"
              x:DataType="viewModels:ProfileViewModel"
              x:Class="caca360.ProfilePage"
-             Title=""
+             Title="Perfil"
              BackgroundImageSource="fundo.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringNotEmptyToBoolConverter x:Key="StringNotEmptyToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="True" />
     </Shell.BackButtonBehavior>
-    
+
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-			<Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />
-			<Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
+
+            <Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />
+
+            <!-- Border com imagem de perfil arredondada -->
+            <Border Padding="5" Background="LightGray" Stroke="Gray" StrokeThickness="1" HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="75" />
+                </Border.StrokeShape>
+                <Image Source="{Binding ProfileImagePath}" 
+                       HeightRequest="150" WidthRequest="150" 
+                       Aspect="AspectFill" />
+            </Border>
+
+            <!-- Botões para escolher, tirar e remover foto -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Text="Escolher Foto" Command="{Binding PickPhotoCommand}" />
+                <Button Text="Tirar Foto" Command="{Binding TakePhotoCommand}" />
+                <Button Text="Remover Foto"
+                        Command="{Binding RemovePhotoCommand}"
+                        IsEnabled="{Binding ProfileImagePath, Converter={StaticResource StringNotEmptyToBoolConverter}}" />
+            </HorizontalStackLayout>
+
+            <Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
             <Picker Title="Tipo" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" />
             <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
             <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
             <Picker Title="Tipo de Zona de Caça" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
             <Entry Placeholder="Número" Keyboard="Numeric" Text="{Binding Number}" />
+
             <Button Text="Salvar" TextColor="Black" BackgroundColor="LightBlue" Command="{Binding SaveCommand}" />
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

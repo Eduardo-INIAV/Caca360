@@ -8,7 +8,27 @@ public partial class ProfilePage : ContentPage
     {
         InitializeComponent();
         BindingContext = new ProfileViewModel();
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+        var backButton = new ToolbarItem
+        {
+            IconImageSource = "back_arrow.png",
+            Priority = 0,
+            Order = ToolbarItemOrder.Primary,
+            Command = new Command(() =>
+            {
+                BackButtonBehavior();
+            })
+        };
+        ToolbarItems.Add(backButton);
+    }
+
+    private void BackButtonBehavior()
+    {
+        // Faz a navegação para a página desejada
+        this.Dispatcher.Dispatch(async () =>
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+        });
+    
     }
 
     protected override bool OnBackButtonPressed()

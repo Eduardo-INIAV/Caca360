@@ -9,7 +9,27 @@ public partial class DashboardPage : ContentPage
         var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/0bbdae73f4184da5b88fe55d65b0394e";
         ArcGisWebView.Source = surveyUrl;
 
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
+        var backButton = new ToolbarItem
+        {
+            IconImageSource = "back_arrow.png",
+            Priority = 0,
+            Order = ToolbarItemOrder.Primary,
+            Command = new Command(() =>
+            {
+                BackButtonBehavior();
+            })
+        };
+        ToolbarItems.Add(backButton);
+    }
+
+    private void BackButtonBehavior()
+    {
+        // Faz a navegação para a página desejada
+        this.Dispatcher.Dispatch(async () =>
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+        });
+    
     }
 
 

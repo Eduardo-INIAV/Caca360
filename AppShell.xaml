@@ -16,5 +16,8 @@
     <ShellContent Title="Espécies Cinegéticas" Route="EspeciesPage" ContentTemplate="{DataTemplate local:EspeciesPage}" Icon="logo.png" />
     <ShellContent Title="Noticias" Route="NoticiasPage" ContentTemplate="{DataTemplate local:NoticiasPage}" Icon="logo.png" />
     <ShellContent Title="Tempo" Route="TempoPage" ContentTemplate="{DataTemplate local:TempoPage}" Icon="logo.png" />
+    <ShellContent Title="Tempo" Route="AvesPage" ContentTemplate="{DataTemplate local:AvesPage}" Icon="logo.png" />
+    <ShellContent Title="Tempo" Route="LagoPage" ContentTemplate="{DataTemplate local:LagoPage}" Icon="logo.png" />
+    <ShellContent Title="Tempo" Route="MamiferosPage" ContentTemplate="{DataTemplate local:MamiferosPage}" Icon="logo.png" />
 
 </Shell>

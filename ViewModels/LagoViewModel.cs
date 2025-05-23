@@ -46,7 +46,7 @@ public partial class LagoViewModel : ObservableObject
                 return;
 
             // navega para página do animal
-            await Shell.Current.GoToAsync($"{nameof(AnimalPage)}?nome={animal.Nome}&descricao={animal.Descricao}&imagem={animal.Imagem}");
+            await Shell.Current.GoToAsync($"{nameof(AnimalPage)}?nome={animal.Nome}&descricao={animal.Descricao}&imagem={animal.Imagem}&especie=Lago");
         });
     }
 

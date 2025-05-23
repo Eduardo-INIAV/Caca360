@@ -11,3 +11,15 @@ dotnet_diagnostic.CS8604.severity = none
 
 # IDE0028: Simplificar a inicialização de coleção
 dotnet_diagnostic.IDE0028.severity = none
+
+# CS8601: Possível atribuição de referência nula.
+dotnet_diagnostic.CS8601.severity = none
+
+# CS8600: Conversão de literal nula ou possível valor nulo em tipo não anulável.
+dotnet_diagnostic.CS8600.severity = none
+
+# IDE0090: Usar 'new(...)'
+dotnet_diagnostic.IDE0090.severity = none
+
+# IDE0021: Usar o corpo do bloco para construtor
+dotnet_diagnostic.IDE0021.severity = none
