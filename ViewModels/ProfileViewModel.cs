@@ -7,11 +7,16 @@ using System.Windows.Input;
 using CommunityToolkit.Maui.Media;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Storage;
+using caca360.Models;
+using caca360.Services;
 
 namespace caca360.ViewModels;
 
 public partial class ProfileViewModel : INotifyPropertyChanged
 {
+    private readonly ProfileService _profileService;
+    private readonly string _userId;
+
     private string _huntingLicense = string.Empty;
     private string _selectedType = string.Empty;
     private string _selectedGender = string.Empty;
@@ -27,8 +32,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _huntingLicense;
         set
         {
-            _huntingLicense = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HuntingLicense)));
+            if (_huntingLicense != value)
+            {
+                _huntingLicense = value;
+                OnPropertyChanged(nameof(HuntingLicense));
+            }
         }
     }
 
@@ -38,8 +46,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _selectedType;
         set
         {
-            _selectedType = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedType)));
+            if (_selectedType != value)
+            {
+                _selectedType = value;
+                OnPropertyChanged(nameof(SelectedType));
+            }
         }
     }
 
@@ -49,8 +60,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _selectedGender;
         set
         {
-            _selectedGender = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedGender)));
+            if (_selectedGender != value)
+            {
+                _selectedGender = value;
+                OnPropertyChanged(nameof(SelectedGender));
+            }
         }
     }
 
@@ -59,8 +73,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _age;
         set
         {
-            _age = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Age)));
+            if (_age != value)
+            {
+                _age = value;
+                OnPropertyChanged(nameof(Age));
+            }
         }
     }
 
@@ -70,8 +87,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _selectedHuntingZoneType;
         set
         {
-            _selectedHuntingZoneType = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedHuntingZoneType)));
+            if (_selectedHuntingZoneType != value)
+            {
+                _selectedHuntingZoneType = value;
+                OnPropertyChanged(nameof(SelectedHuntingZoneType));
+            }
         }
     }
 
@@ -80,8 +100,11 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         get => _number;
         set
         {
-            _number = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Number)));
+            if (_number != value)
+            {
+                _number = value;
+                OnPropertyChanged(nameof(Number));
+            }
         }
     }
 
@@ -94,27 +117,37 @@ public partial class ProfileViewModel : INotifyPropertyChanged
             {
                 _profileImagePath = value;
                 Preferences.Default.Set(nameof(ProfileImagePath), value);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ProfileImagePath)));
+                OnPropertyChanged(nameof(ProfileImagePath));
             }
         }
     }
 
-    // Comandos para o UI
+    // Comandos para a UI
     public ICommand SaveCommand { get; }
     public ICommand RemovePhotoCommand { get; }
     public ICommand PickPhotoCommand { get; }
     public ICommand TakePhotoCommand { get; }
 
-    public ProfileViewModel()
+
+    public ProfileViewModel(ProfileService profileService, string userId)
     {
+        _profileService = profileService;
+        _userId = userId;
+
         _profileImagePath = Preferences.Default.Get(nameof(ProfileImagePath), string.Empty);
 
-        SaveCommand = new Command(async () => await SaveProfile());
+        SaveCommand = new Command(async () => await SaveProfileAsync());
         RemovePhotoCommand = new Command(RemovePhoto);
         PickPhotoCommand = new Command(async () => await PickPhotoAsync());
         TakePhotoCommand = new Command(async () => await TakePhotoAsync());
+
+        // NÃO carregar perfil aqui no construtor
     }
 
+    public async Task InitializeAsync()
+    {
+        await LoadProfileAsync();
+    }
     private void RemovePhoto()
     {
         ProfileImagePath = string.Empty;
@@ -125,7 +158,6 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         try
         {
             var photo = await MediaPicker.PickPhotoAsync();
-
             if (photo != null)
             {
                 var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
@@ -146,22 +178,17 @@ public partial class ProfileViewModel : INotifyPropertyChanged
             await MainThread.InvokeOnMainThreadAsync(async () =>
             {
                 var photo = await MediaPicker.CapturePhotoAsync();
-
                 if (photo != null)
                 {
                     var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
                     File.Copy(photo.FullPath, newPath, true);
                     ProfileImagePath = newPath;
                 }
-                else
-                {
-                    Console.WriteLine("Foto cancelada.");
-                }
             });
         }
         catch (OperationCanceledException)
         {
-            Console.WriteLine("Operação cancelada pelo utilizador.");
+            // Utilizador cancelou
         }
         catch (Exception ex)
         {
@@ -169,9 +196,60 @@ public partial class ProfileViewModel : INotifyPropertyChanged
         }
     }
 
-    private async Task SaveProfile()
+    public async Task LoadProfileAsync()
     {
-        // Aqui colocas o teu código para salvar no Firebase ou outro serviço
-        await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");
+        try
+        {
+            var profile = await _profileService.GetUserProfileAsync(_userId);
+            if (profile != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"Perfil carregado: {profile.HuntingLicense}, {profile.SelectedType}");
+
+                HuntingLicense = profile.HuntingLicense;
+                SelectedType = profile.SelectedType;
+                SelectedGender = profile.SelectedGender;
+                Age = profile.Age;
+                SelectedHuntingZoneType = profile.SelectedHuntingZoneType;
+                Number = profile.Number;
+                ProfileImagePath = profile.ProfileImagePath;
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Perfil não encontrado (null).");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro ao carregar perfil: {ex.Message}");
+            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao carregar perfil: {ex.Message}", "OK");
+        }
     }
+
+
+    public async Task SaveProfileAsync()
+    {
+        try
+        {
+            var profile = new UserProfile
+            {
+                HuntingLicense = this.HuntingLicense,
+                SelectedType = this.SelectedType,
+                SelectedGender = this.SelectedGender,
+                Age = this.Age,
+                SelectedHuntingZoneType = this.SelectedHuntingZoneType,
+                Number = this.Number,
+                ProfileImagePath = this.ProfileImagePath
+            };
+
+            await _profileService.SaveUserProfileAsync(_userId, profile);
+            await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao salvar perfil: {ex.Message}", "OK");
+        }
+    }
+
+    protected void OnPropertyChanged(string propertyName) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

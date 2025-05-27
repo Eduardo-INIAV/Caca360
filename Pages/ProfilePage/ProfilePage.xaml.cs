@@ -1,16 +1,26 @@
-﻿using caca360.ViewModels;
+﻿using caca360.Services; // para ProfileService
+using caca360.ViewModels;
 
 namespace caca360;
 
 public partial class ProfilePage : ContentPage
 {
+    private readonly ProfileViewModel _viewModel;
+
     public ProfilePage()
     {
         InitializeComponent();
-        BindingContext = new ProfileViewModel();
+
+        var profileService = MauiProgram.ServiceProvider.GetRequiredService<ProfileService>();
+        var authService = MauiProgram.ServiceProvider.GetRequiredService<AuthService>();
+        var userId = authService.UserId;
+
+        _viewModel = new ProfileViewModel(profileService, userId);
+        BindingContext = _viewModel;
+
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
@@ -21,14 +31,22 @@ public partial class ProfilePage : ContentPage
         ToolbarItems.Add(backButton);
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is ProfileViewModel vm)
+        {
+            await vm.InitializeAsync();
+        }
+    }
+
     private void BackButtonBehavior()
     {
-        // Faz a navegação para a página desejada
         this.Dispatcher.Dispatch(async () =>
         {
             await Shell.Current.GoToAsync("//MainPage");
         });
-    
     }
 
     protected override bool OnBackButtonPressed()

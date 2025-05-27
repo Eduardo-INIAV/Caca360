@@ -100,6 +100,9 @@
 	  <Compile Update="Pages\CensosPage\CensosPage.xaml.cs">
 	    <DependentUpon>CensosPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DescPage\DescPage.xaml.cs">
+	    <DependentUpon>DescPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\LagoPage\LagoPage.xaml.cs">
 	    <DependentUpon>LagoPage.xaml</DependentUpon>
 	  </Compile>
@@ -109,8 +112,8 @@
 	  <Compile Update="Pages\NoticiasPage\NoticiasPage.xaml.cs">
 	    <DependentUpon>NoticiasPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TempoPage\TempoPage.xaml.cs">
-	    <DependentUpon>TempoPage.xaml</DependentUpon>
+	  <Compile Update="Pages\WeatherPage\WeatherPage.xaml.cs">
+	    <DependentUpon>WeatherPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -131,6 +134,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DashboardPage\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\DescPage\DescPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\EspeciesPage\EspeciesPage.xaml">
@@ -160,7 +166,7 @@
 	  <MauiXaml Update="Pages\ProfilePage\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TempoPage\TempoPage.xaml">
+	  <MauiXaml Update="Pages\WeatherPage\WeatherPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ZonasPage\ZonasPage.xaml">

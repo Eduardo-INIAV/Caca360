@@ -1,0 +1,25 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="caca360.DescPage"
+             Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label x:Name="NomeLabel"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <Image x:Name="DescImage"
+                   HeightRequest="200"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="DescricaoLabel"
+                   FontSize="16"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

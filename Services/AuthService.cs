@@ -1,27 +1,26 @@
 ﻿using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace caca360.Services;
 
 public class AuthService
 {
-    public string Token { get; private set; } = string.Empty;
+    private FirebaseAuth? _auth;
 
-    public void SetToken(string token) => Token = token;
+    public string Token => _auth?.FirebaseToken ?? string.Empty;
+    public string UserId => _auth?.User?.LocalId ?? string.Empty;
 
-    public async Task<string> LoginAsync(string email, string password)
+    public async Task LoginAsync(string email, string password)
     {
         var authProvider = MauiProgram.ServiceProvider.GetRequiredService<FirebaseAuthProvider>();
-        var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
-        Token = auth.FirebaseToken;
+        _auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
-        if (string.IsNullOrEmpty(Token))
+        if (_auth == null || string.IsNullOrEmpty(_auth.FirebaseToken))
         {
             throw new Exception("Falha ao obter o token de autenticação.");
         }
-
-        return Token;
     }
 
     public static async Task RegisterUserAsync(string username, string email, string password)
@@ -29,12 +28,10 @@ public class AuthService
         var authProvider = MauiProgram.ServiceProvider.GetRequiredService<FirebaseAuthProvider>();
         var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username, true);
 
-        // Salvar informações adicionais no Realtime Database
         var firebaseClient = MauiProgram.ServiceProvider.GetRequiredService<FirebaseClient>();
         await firebaseClient
-            .Child("users") // Adiciona o nó "users"
-            .Child(auth.User.LocalId) // Adiciona o ID único do usuário
+            .Child("users")
+            .Child(auth.User.LocalId)
             .PutAsync(new { Username = username, Email = email });
     }
-
 }

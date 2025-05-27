@@ -5,12 +5,12 @@ namespace caca360;
 [QueryProperty(nameof(Nome), "nome")]
 [QueryProperty(nameof(Descricao), "descricao")]
 [QueryProperty(nameof(Imagem), "imagem")]
-[QueryProperty(nameof(Especie), "especie")]
+[QueryProperty(nameof(Categoria), "categoria")]
 
-public partial class AnimalPage : ContentPage
+public partial class DescPage : ContentPage
 {
-    public string Especie { get; set; } = string.Empty;
 
+    public string Categoria { get; set; } = string.Empty;
     public string Nome
     {
         set => Title = value;
@@ -23,10 +23,10 @@ public partial class AnimalPage : ContentPage
 
     public string Imagem
     {
-        set => AnimalImage.Source = Uri.UnescapeDataString(value);
+        set => DescImage.Source = Uri.UnescapeDataString(value);
     }
 
-    public AnimalPage()
+    public DescPage()
     {
         InitializeComponent();
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
@@ -37,30 +37,18 @@ public partial class AnimalPage : ContentPage
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
             {
-                VoltarParaEspecie();
+                VoltarParaCategoria();
             })
         };
         ToolbarItems.Add(backButton);
     }
-    private async void OnLinkTapped(object sender, EventArgs e)
-    {
-        string url = "http://especiescinegeticas.pt/"; // muda para o link que quiseres
-        try
-        {
-            await Launcher.OpenAsync(url);
-        }
-        catch (Exception)
-        {
-            await DisplayAlert("Erro", "Não foi possível abrir o link.", "OK");
-        }
-    }
 
-    private async void VoltarParaEspecie()
+    private async void VoltarParaCategoria()
     {
-        if (!string.IsNullOrEmpty(Especie))
+        if (!string.IsNullOrEmpty(Categoria))
         {
-            // Voltar para página da espécie
-            await Shell.Current.GoToAsync($"//{Especie}Page");
+            // Voltar para a página da espécie (ex: AvesPage)
+            await Shell.Current.GoToAsync($"//{Categoria}Page");
         }
         else
         {
@@ -71,10 +59,10 @@ public partial class AnimalPage : ContentPage
 
     protected override bool OnBackButtonPressed()
     {
-        if (!string.IsNullOrEmpty(Especie))
+        if (!string.IsNullOrEmpty(Categoria))
         {
             // Voltar para a página da espécie (ex: AvesPage)
-            Shell.Current.GoToAsync($"//{Especie}Page");
+            Shell.Current.GoToAsync($"//{Categoria}Page");
             return true; // cancela o back padrão
         }
         else

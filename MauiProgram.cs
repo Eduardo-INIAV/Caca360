@@ -29,6 +29,9 @@ public static class MauiProgram
 
         // Serviços
         builder.Services.AddSingleton<AuthService>();
+        builder.Services.AddSingleton<LocationService>();
+        builder.Services.AddSingleton<ProfileService>();
+        builder.Services.AddSingleton<WeatherService>();
 
         // ViewModels
         builder.Services.AddTransient<LoginViewModel>();
@@ -43,6 +46,7 @@ public static class MauiProgram
         builder.Services.AddTransient<EspeciesViewModel>();
         builder.Services.AddTransient<ArmasViewModel>();
         builder.Services.AddTransient<NoticiasViewModel>();
+        builder.Services.AddTransient<WeatherViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -62,7 +66,8 @@ public static class MauiProgram
         builder.Services.AddTransient<EspeciesPage>();
         builder.Services.AddTransient<ArmasPage>();
         builder.Services.AddTransient<NoticiasPage>();
-        builder.Services.AddTransient<TempoPage>();
+        builder.Services.AddTransient<WeatherPage>();
+        builder.Services.AddTransient<DescPage>();
 
         var app = builder.Build();
         ServiceProvider = app.Services;

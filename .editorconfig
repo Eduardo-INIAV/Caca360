@@ -26,3 +26,6 @@ dotnet_diagnostic.IDE0021.severity = none
 
 # CA1822: Marcar membros como estáticos
 dotnet_diagnostic.CA1822.severity = none
+
+# IDE0270: Usar a expressão de união
+dotnet_diagnostic.IDE0270.severity = none

@@ -11,7 +11,7 @@ public partial class AvesPage : ContentPage
         Shell.SetBackButtonBehavior( this, new BackButtonBehavior { IsVisible = true });
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>

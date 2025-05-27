@@ -10,7 +10,7 @@ public partial class CaesPage : ContentPage
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
