@@ -148,8 +148,7 @@ namespace caca360.ViewModels
                 );
 
                 await App.Current.MainPage.DisplayAlert("Sucesso", "Registo efetuado com sucesso!", "OK");
-
-                // Limpar campos ou navegar
+                await Shell.Current.GoToAsync("//LoginPage");
             }
             catch (Exception ex)
             {
