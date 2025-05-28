@@ -5,15 +5,21 @@ using caca360.Models;
 
 namespace caca360.Services;
 
-public class ProfileService(FirebaseClient firebaseClient)
+public class ProfileService
 {
-    private readonly FirebaseClient _firebaseClient = firebaseClient;
+    private readonly Func<FirebaseClient> _firebaseClientFactory;
+
+    public ProfileService(Func<FirebaseClient> firebaseClientFactory)
+    {
+        _firebaseClientFactory = firebaseClientFactory;
+    }
 
     public async Task<UserProfile?> GetUserProfileAsync(string userId)
     {
         try
         {
-            return await _firebaseClient
+            var client = _firebaseClientFactory();
+            return await client
                 .Child("users")
                 .Child(userId)
                 .OnceSingleAsync<UserProfile>();
@@ -26,10 +32,11 @@ public class ProfileService(FirebaseClient firebaseClient)
 
     public async Task SaveUserProfileAsync(string userId, UserProfile profile)
     {
-        await _firebaseClient
+        var client = _firebaseClientFactory();
+        await client
             .Child("users")
             .Child(userId)
-            .Child("profile") // Guardar dentro de "profile"
             .PutAsync(profile);
     }
 }
+

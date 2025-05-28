@@ -8,6 +8,6 @@ public partial class RegisterPage : ContentPage
     {
         InitializeComponent();
         BindingContext = vm;
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });// Define o ViewModel como o BindingContext
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
     }
 }

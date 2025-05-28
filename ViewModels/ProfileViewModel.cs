@@ -10,172 +10,115 @@ using Microsoft.Maui.Storage;
 using caca360.Models;
 using caca360.Services;
 
-namespace caca360.ViewModels;
-
-public partial class ProfileViewModel : INotifyPropertyChanged
+namespace caca360.ViewModels
 {
-    private readonly ProfileService _profileService;
-    private readonly string _userId;
-
-    private string _huntingLicense = string.Empty;
-    private string _selectedType = string.Empty;
-    private string _selectedGender = string.Empty;
-    private string _age = string.Empty;
-    private string _selectedHuntingZoneType = string.Empty;
-    private string _number = string.Empty;
-    private string _profileImagePath = string.Empty;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    public string HuntingLicense
+    public partial class ProfileViewModel : INotifyPropertyChanged
     {
-        get => _huntingLicense;
-        set
+        private readonly ProfileService _profileService;
+        private readonly AuthService _authService;
+
+        private string _username = string.Empty;
+        private string _email = string.Empty;
+        private string _selectedGender = string.Empty;
+        private string _age = string.Empty;
+        private string _huntingLicense = string.Empty;
+        private string _nif = string.Empty;
+        private string _profileImagePath = string.Empty;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public string Username
         {
-            if (_huntingLicense != value)
+            get => _username;
+            set { if (_username != value) { _username = value; OnPropertyChanged(nameof(Username)); } }
+        }
+
+        public string Email
+        {
+            get => _email;
+            private set { if (_email != value) { _email = value; OnPropertyChanged(nameof(Email)); } }
+        }
+
+        public ObservableCollection<string> Genders { get; } = new() { "Masculino", "Feminino", "Outro" };
+
+        public string SelectedGender
+        {
+            get => _selectedGender;
+            set { if (_selectedGender != value) { _selectedGender = value; OnPropertyChanged(nameof(SelectedGender)); } }
+        }
+
+        public string Age
+        {
+            get => _age;
+            set { if (_age != value) { _age = value; OnPropertyChanged(nameof(Age)); } }
+        }
+
+        public string HuntingLicense
+        {
+            get => _huntingLicense;
+            set { if (_huntingLicense != value) { _huntingLicense = value; OnPropertyChanged(nameof(HuntingLicense)); } }
+        }
+
+        public string NIF
+        {
+            get => _nif;
+            set { if (_nif != value) { _nif = value; OnPropertyChanged(nameof(NIF)); } }
+        }
+
+        public string ProfileImagePath
+        {
+            get => _profileImagePath;
+            set { if (_profileImagePath != value) { _profileImagePath = value; OnPropertyChanged(nameof(ProfileImagePath)); } }
+        }
+
+        // Comandos
+        public ICommand SaveCommand { get; }
+        public ICommand RemovePhotoCommand { get; }
+        public ICommand PickPhotoCommand { get; }
+        public ICommand TakePhotoCommand { get; }
+
+        public ProfileViewModel(ProfileService profileService, AuthService authService)
+        {
+            _profileService = profileService;
+            _authService = authService;
+
+            SaveCommand = new Command(async () => await SaveProfileAsync());
+            RemovePhotoCommand = new Command(RemovePhoto);
+            PickPhotoCommand = new Command(async () => await PickPhotoAsync());
+            TakePhotoCommand = new Command(async () => await TakePhotoAsync());
+        }
+
+        public async Task InitializeAsync()
+        {
+            await LoadProfileAsync();
+        }
+
+        private void RemovePhoto()
+        {
+            ProfileImagePath = string.Empty;
+        }
+
+        private async Task PickPhotoAsync()
+        {
+            try
             {
-                _huntingLicense = value;
-                OnPropertyChanged(nameof(HuntingLicense));
+                var photo = await MediaPicker.PickPhotoAsync();
+                if (photo != null)
+                {
+                    var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
+                    File.Copy(photo.FullPath, newPath, true);
+                    ProfileImagePath = newPath;
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao escolher a foto: {ex.Message}", "OK");
             }
         }
-    }
 
-    public ObservableCollection<string> Types { get; } = new ObservableCollection<string> { "Tipo 1", "Tipo 2", "Tipo 3" };
-    public string SelectedType
-    {
-        get => _selectedType;
-        set
+        private async Task TakePhotoAsync()
         {
-            if (_selectedType != value)
-            {
-                _selectedType = value;
-                OnPropertyChanged(nameof(SelectedType));
-            }
-        }
-    }
-
-    public ObservableCollection<string> Genders { get; } = new ObservableCollection<string> { "Masculino", "Feminino", "Outro" };
-    public string SelectedGender
-    {
-        get => _selectedGender;
-        set
-        {
-            if (_selectedGender != value)
-            {
-                _selectedGender = value;
-                OnPropertyChanged(nameof(SelectedGender));
-            }
-        }
-    }
-
-    public string Age
-    {
-        get => _age;
-        set
-        {
-            if (_age != value)
-            {
-                _age = value;
-                OnPropertyChanged(nameof(Age));
-            }
-        }
-    }
-
-    public ObservableCollection<string> HuntingZoneTypes { get; } = new ObservableCollection<string> { "Zona 1", "Zona 2", "Zona 3" };
-    public string SelectedHuntingZoneType
-    {
-        get => _selectedHuntingZoneType;
-        set
-        {
-            if (_selectedHuntingZoneType != value)
-            {
-                _selectedHuntingZoneType = value;
-                OnPropertyChanged(nameof(SelectedHuntingZoneType));
-            }
-        }
-    }
-
-    public string Number
-    {
-        get => _number;
-        set
-        {
-            if (_number != value)
-            {
-                _number = value;
-                OnPropertyChanged(nameof(Number));
-            }
-        }
-    }
-
-    public string ProfileImagePath
-    {
-        get => _profileImagePath;
-        set
-        {
-            if (_profileImagePath != value)
-            {
-                _profileImagePath = value;
-                Preferences.Default.Set(nameof(ProfileImagePath), value);
-                OnPropertyChanged(nameof(ProfileImagePath));
-            }
-        }
-    }
-
-    // Comandos para a UI
-    public ICommand SaveCommand { get; }
-    public ICommand RemovePhotoCommand { get; }
-    public ICommand PickPhotoCommand { get; }
-    public ICommand TakePhotoCommand { get; }
-
-
-    public ProfileViewModel(ProfileService profileService, string userId)
-    {
-        _profileService = profileService;
-        _userId = userId;
-
-        _profileImagePath = Preferences.Default.Get(nameof(ProfileImagePath), string.Empty);
-
-        SaveCommand = new Command(async () => await SaveProfileAsync());
-        RemovePhotoCommand = new Command(RemovePhoto);
-        PickPhotoCommand = new Command(async () => await PickPhotoAsync());
-        TakePhotoCommand = new Command(async () => await TakePhotoAsync());
-
-        // NÃO carregar perfil aqui no construtor
-    }
-
-    public async Task InitializeAsync()
-    {
-        await LoadProfileAsync();
-    }
-    private void RemovePhoto()
-    {
-        ProfileImagePath = string.Empty;
-    }
-
-    private async Task PickPhotoAsync()
-    {
-        try
-        {
-            var photo = await MediaPicker.PickPhotoAsync();
-            if (photo != null)
-            {
-                var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
-                File.Copy(photo.FullPath, newPath, true);
-                ProfileImagePath = newPath;
-            }
-        }
-        catch (Exception ex)
-        {
-            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao escolher a foto: {ex.Message}", "OK");
-        }
-    }
-
-    public async Task TakePhotoAsync()
-    {
-        try
-        {
-            await MainThread.InvokeOnMainThreadAsync(async () =>
+            try
             {
                 var photo = await MediaPicker.CapturePhotoAsync();
                 if (photo != null)
@@ -184,72 +127,75 @@ public partial class ProfileViewModel : INotifyPropertyChanged
                     File.Copy(photo.FullPath, newPath, true);
                     ProfileImagePath = newPath;
                 }
-            });
-        }
-        catch (OperationCanceledException)
-        {
-            // Utilizador cancelou
-        }
-        catch (Exception ex)
-        {
-            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao tirar a foto: {ex.Message}", "OK");
-        }
-    }
-
-    public async Task LoadProfileAsync()
-    {
-        try
-        {
-            var profile = await _profileService.GetUserProfileAsync(_userId);
-            if (profile != null)
-            {
-                System.Diagnostics.Debug.WriteLine($"Perfil carregado: {profile.HuntingLicense}, {profile.SelectedType}");
-
-                HuntingLicense = profile.HuntingLicense;
-                SelectedType = profile.SelectedType;
-                SelectedGender = profile.SelectedGender;
-                Age = profile.Age;
-                SelectedHuntingZoneType = profile.SelectedHuntingZoneType;
-                Number = profile.Number;
-                ProfileImagePath = profile.ProfileImagePath;
             }
-            else
+            catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Perfil não encontrado (null).");
+                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao tirar a foto: {ex.Message}", "OK");
             }
         }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Erro ao carregar perfil: {ex.Message}");
-            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao carregar perfil: {ex.Message}", "OK");
-        }
-    }
 
-
-    public async Task SaveProfileAsync()
-    {
-        try
+        public async Task LoadProfileAsync()
         {
-            var profile = new UserProfile
+            var userId = _authService.UserId;
+            await App.Current.MainPage.DisplayAlert("Debug", $"userId: {userId}", "OK");
+
+            if (string.IsNullOrEmpty(userId))
             {
-                HuntingLicense = this.HuntingLicense,
-                SelectedType = this.SelectedType,
-                SelectedGender = this.SelectedGender,
-                Age = this.Age,
-                SelectedHuntingZoneType = this.SelectedHuntingZoneType,
-                Number = this.Number,
-                ProfileImagePath = this.ProfileImagePath
-            };
+                await App.Current.MainPage.DisplayAlert("Erro", "Utilizador não autenticado.", "OK");
+                return;
+            }
 
-            await _profileService.SaveUserProfileAsync(_userId, profile);
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");
+            try
+            {
+                var profile = await _profileService.GetUserProfileAsync(userId);
+                if (profile != null)
+                {
+                    Username = profile.Username;
+                    Email = profile.Email;
+                    SelectedGender = profile.SelectedGender;
+                    Age = profile.Age;
+                    HuntingLicense = profile.HuntingLicense;
+                    NIF = profile.NIF;
+                    ProfileImagePath = profile.ProfileImagePath;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Aviso", "Perfil não encontrado.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao carregar perfil: {ex.Message}", "OK");
+            }
         }
-        catch (Exception ex)
+
+
+        public async Task SaveProfileAsync()
         {
-            await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao salvar perfil: {ex.Message}", "OK");
-        }
-    }
+            try
+            {
+                var userId = _authService.UserId;
+                var profile = new UserProfile
+                {
+                    Username = Username,
+                    Email = Email,
+                    SelectedGender = SelectedGender,
+                    Age = Age,
+                    HuntingLicense = HuntingLicense,
+                    NIF = NIF,
+                    ProfileImagePath = ProfileImagePath
+                };
 
-    protected void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                await _profileService.SaveUserProfileAsync(userId, profile);
+                await App.Current.MainPage.DisplayAlert("Sucesso", "Perfil salvo com sucesso!", "OK");
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao salvar perfil: {ex.Message}", "OK");
+            }
+        }
+
+        protected void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }

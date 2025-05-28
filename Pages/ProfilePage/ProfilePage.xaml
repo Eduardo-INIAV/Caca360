@@ -23,7 +23,7 @@
 
             <Label Text="Perfil do utilizador" FontSize="24" HorizontalOptions="Center" />
 
-            <!-- Border com imagem de perfil arredondada -->
+            <!-- Imagem de perfil -->
             <Border Padding="5" Background="LightGray" Stroke="Gray" StrokeThickness="1" HorizontalOptions="Center">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="75" />
@@ -33,7 +33,7 @@
                        Aspect="AspectFill" />
             </Border>
 
-            <!-- Botões para escolher, tirar e remover foto -->
+            <!-- Botões de imagem -->
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
                 <Button Text="Escolher Foto" Command="{Binding PickPhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
                 <Button Text="Tirar Foto" Command="{Binding TakePhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
@@ -42,12 +42,13 @@
                         IsEnabled="{Binding ProfileImagePath, Converter={StaticResource StringNotEmptyToBoolConverter}}" />
             </HorizontalStackLayout>
 
-            <Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
-            <Picker Title="Tipo" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" />
-            <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
-            <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
-            <Picker Title="Tipo de Zona de Caça" ItemsSource="{Binding HuntingZoneTypes}" SelectedItem="{Binding SelectedHuntingZoneType}" />
-            <Entry Placeholder="Número" Keyboard="Numeric" Text="{Binding Number}" />
+            <!-- Campos do perfil -->
+            <Entry Text="{Binding Username}" Placeholder="Nome de utilizador" />
+            <Entry Text="{Binding Email}" Placeholder="Email" IsReadOnly="True" />
+            <Entry Text="{Binding Age}" Placeholder="Idade" Keyboard="Numeric" />
+            <Entry Text="{Binding SelectedGender}" Placeholder="Género" />
+            <Entry Text="{Binding HuntingLicense}" Placeholder="Nº Licença de Caçador" />
+            <Entry Text="{Binding NIF}" Placeholder="NIF" Keyboard="Numeric" />
 
             <Button Text="Salvar" TextColor="Black" BackgroundColor="LightBlue" Command="{Binding SaveCommand}" />
 

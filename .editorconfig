@@ -29,3 +29,6 @@ dotnet_diagnostic.CA1822.severity = none
 
 # IDE0270: Usar a expressão de união
 dotnet_diagnostic.IDE0270.severity = none
+
+# IDE0290: Usar construtor primário
+dotnet_diagnostic.IDE0290.severity = none

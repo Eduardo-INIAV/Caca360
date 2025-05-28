@@ -1,18 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:caca360.ViewModels"
              x:Class="caca360.RegisterPage"
-             x:DataType="viewModels:RegisterViewModel"
-             Title="Registo">
+             Title="Registo"
+             BackgroundImageSource="fundo.png"
+             x:DataType="viewModels:RegisterViewModel">
 
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Fill">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Entry Placeholder="Nome de utilizador" Text="{Binding Username}" />
-        <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
-        <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Password}" />
-        <Button Text="Registar" Command="{Binding RegisterCommand}" />
-    </VerticalStackLayout>
+            <!-- Imagem de Perfil Circular no topo -->
+            <Border Padding="5" Background="LightGray" Stroke="Gray" StrokeThickness="1"
+                    HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="75" />
+                </Border.StrokeShape>
+                <Image Source="{Binding ProfileImagePath}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
+            </Border>
+
+            <!-- Botões de foto -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Text="Escolher Foto" Command="{Binding PickPhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
+                <Button Text="Tirar Foto" Command="{Binding TakePhotoCommand}" BackgroundColor="LightBlue" TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <Entry Placeholder="Nome de Utilizador" Text="{Binding Username}" />
+            <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
+            <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
+            <Entry Placeholder="Idade" Keyboard="Numeric" Text="{Binding Age}" />
+
+            <Picker Title="Gênero" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
+
+            <Entry Placeholder="Carta de Caçador" Text="{Binding HuntingLicense}" />
+            <Entry Placeholder="NIF" Keyboard="Numeric" Text="{Binding NIF}" />
+
+            <Button Text="Registar" Command="{Binding RegisterCommand}" BackgroundColor="LightBlue" TextColor="Black" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

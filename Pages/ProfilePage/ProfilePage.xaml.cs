@@ -15,7 +15,7 @@ public partial class ProfilePage : ContentPage
         var authService = MauiProgram.ServiceProvider.GetRequiredService<AuthService>();
         var userId = authService.UserId;
 
-        _viewModel = new ProfileViewModel(profileService, userId);
+        _viewModel = new ProfileViewModel(profileService, authService);
         BindingContext = _viewModel;
 
         var backButton = new ToolbarItem
