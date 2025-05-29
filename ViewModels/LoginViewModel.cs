@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using caca360.Services;
+using Firebase.Auth;
+using System.ComponentModel;
 using System.Windows.Input;
-using caca360.Services;
+using Microsoft.Maui.Storage;
 
 namespace caca360.ViewModels;
 
@@ -59,9 +61,8 @@ public partial class LoginViewModel : INotifyPropertyChanged
             {
                 throw new Exception("Token inválido.");
             }
-
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
             await Shell.Current.GoToAsync("//MainPage");
+            await SecureStorage.SetAsync("userId", _authService.UserId);
         }
         catch (Exception ex)
         {

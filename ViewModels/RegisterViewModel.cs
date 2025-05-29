@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using CommunityToolkit.Maui.Media;
-using Microsoft.Maui.Storage;
-using caca360.Models;
 using caca360.Services;
 
 namespace caca360.ViewModels
 {
     public partial class RegisterViewModel : INotifyPropertyChanged
     {
-        private readonly ProfileService _profileService;
         private readonly AuthService _authService;
 
         private string _username = string.Empty;
@@ -23,7 +16,6 @@ namespace caca360.ViewModels
         private string _selectedGender = string.Empty;
         private string _huntingLicense = string.Empty;
         private string _nif = string.Empty;
-        private string _profileImagePath = string.Empty;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -69,67 +61,14 @@ namespace caca360.ViewModels
             set { if (_nif != value) { _nif = value; OnPropertyChanged(nameof(NIF)); } }
         }
 
-        public string ProfileImagePath
-        {
-            get => _profileImagePath;
-            set { if (_profileImagePath != value) { _profileImagePath = value; OnPropertyChanged(nameof(ProfileImagePath)); } }
-        }
-
         public ObservableCollection<string> Genders { get; } = new ObservableCollection<string> { "Masculino", "Feminino", "Outro" };
 
-        // Comandos
-        public ICommand PickPhotoCommand { get; }
-        public ICommand TakePhotoCommand { get; }
         public ICommand RegisterCommand { get; }
 
-        public RegisterViewModel(ProfileService profileService, AuthService authService)
+        public RegisterViewModel(AuthService authService)
         {
-            _profileService = profileService;
             _authService = authService;
-
-            PickPhotoCommand = new Command(async () => await PickPhotoAsync());
-            TakePhotoCommand = new Command(async () => await TakePhotoAsync());
             RegisterCommand = new Command(async () => await RegisterAsync());
-        }
-
-        private async Task PickPhotoAsync()
-        {
-            try
-            {
-                var photo = await MediaPicker.PickPhotoAsync();
-                if (photo != null)
-                {
-                    var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
-                    File.Copy(photo.FullPath, newPath, true);
-                    ProfileImagePath = newPath;
-                }
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao escolher a foto: {ex.Message}", "OK");
-            }
-        }
-
-        private async Task TakePhotoAsync()
-        {
-            try
-            {
-                var photo = await MediaPicker.CapturePhotoAsync();
-                if (photo != null)
-                {
-                    var newPath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-                    using (var stream = await photo.OpenReadAsync())
-                    using (var fileStream = new FileStream(newPath, FileMode.Create))
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-                    ProfileImagePath = newPath;
-                }
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Erro", $"Erro ao tirar a foto: {ex.Message}", "OK");
-            }
         }
 
         private async Task RegisterAsync()
@@ -144,7 +83,7 @@ namespace caca360.ViewModels
                     SelectedGender,
                     HuntingLicense,
                     NIF,
-                    ProfileImagePath
+                    string.Empty // Não envia foto de perfil no registo
                 );
 
                 await App.Current.MainPage.DisplayAlert("Sucesso", "Registo efetuado com sucesso!", "OK");

@@ -83,11 +83,10 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Firebase.Auth" Version="1.0.0" />
-		<PackageReference Include="Firebase.Database" Version="1.0.0">
-			<NoWarn>$(NoWarn);NU1701</NoWarn>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
+		<PackageReference Include="FirebaseDatabase.net" Version="5.0.0" />
+		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>

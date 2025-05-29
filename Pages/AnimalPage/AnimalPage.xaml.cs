@@ -4,6 +4,7 @@ using caca360.Models;
 namespace caca360;
 [QueryProperty(nameof(Nome), "nome")]
 [QueryProperty(nameof(Descricao), "descricao")]
+[QueryProperty(nameof(Link), "link")]
 [QueryProperty(nameof(Imagem), "imagem")]
 [QueryProperty(nameof(Especie), "especie")]
 
@@ -26,6 +27,14 @@ public partial class AnimalPage : ContentPage
         set => AnimalImage.Source = Uri.UnescapeDataString(value);
     }
 
+    private string _link = string.Empty;
+    public string Link
+    {
+        get => _link;
+        set => _link = value;
+    }
+
+
     public AnimalPage()
     {
         InitializeComponent();
@@ -44,7 +53,12 @@ public partial class AnimalPage : ContentPage
     }
     private async void OnLinkTapped(object sender, EventArgs e)
     {
-        string url = "http://especiescinegeticas.pt/"; // muda para o link que quiseres
+        string url = _link;
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            await DisplayAlert("Erro", "Link não disponível para este animal.", "OK");
+            return;
+        }
         try
         {
             await Launcher.OpenAsync(url);

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using CommunityToolkit.Maui.Media;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Storage;
 using caca360.Models;
 using caca360.Services;
 
@@ -16,6 +10,7 @@ namespace caca360.ViewModels
     {
         private readonly ProfileService _profileService;
         private readonly AuthService _authService;
+        private readonly StorageService _storageService;
 
         private string _username = string.Empty;
         private string _email = string.Empty;
@@ -24,6 +19,7 @@ namespace caca360.ViewModels
         private string _huntingLicense = string.Empty;
         private string _nif = string.Empty;
         private string _profileImagePath = string.Empty;
+        private string _profileImageUrl = string.Empty;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -68,7 +64,25 @@ namespace caca360.ViewModels
         public string ProfileImagePath
         {
             get => _profileImagePath;
-            set { if (_profileImagePath != value) { _profileImagePath = value; OnPropertyChanged(nameof(ProfileImagePath)); } }
+            set
+            {
+                if (_profileImagePath != value)
+                {
+                    _profileImagePath = value;
+                    OnPropertyChanged(nameof(ProfileImagePath));
+                    // Atualiza ProfileImageUrl se for uma URL
+                    if (!string.IsNullOrEmpty(_profileImagePath) && _profileImagePath.StartsWith("http"))
+                        ProfileImageUrl = _profileImagePath;
+                    else
+                        ProfileImageUrl = string.Empty;
+                }
+            }
+        }
+
+        public string ProfileImageUrl
+        {
+            get => _profileImageUrl;
+            set { if (_profileImageUrl != value) { _profileImageUrl = value; OnPropertyChanged(nameof(ProfileImageUrl)); } }
         }
 
         // Comandos
@@ -77,10 +91,11 @@ namespace caca360.ViewModels
         public ICommand PickPhotoCommand { get; }
         public ICommand TakePhotoCommand { get; }
 
-        public ProfileViewModel(ProfileService profileService, AuthService authService)
+        public ProfileViewModel(ProfileService profileService, AuthService authService, StorageService storageService)
         {
             _profileService = profileService;
             _authService = authService;
+            _storageService = storageService;
 
             SaveCommand = new Command(async () => await SaveProfileAsync());
             RemovePhotoCommand = new Command(RemovePhoto);
@@ -107,7 +122,11 @@ namespace caca360.ViewModels
                 {
                     var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
                     File.Copy(photo.FullPath, newPath, true);
-                    ProfileImagePath = newPath;
+                    // Faz upload imediatamente após escolher a foto
+                    using var stream = File.OpenRead(newPath);
+                    var userId = _authService.UserId;
+                    var photoUrl = await _storageService.UploadPhotoAsync(stream, userId);
+                    ProfileImagePath = photoUrl;
                 }
             }
             catch (Exception ex)
@@ -125,7 +144,12 @@ namespace caca360.ViewModels
                 {
                     var newPath = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(photo.FullPath));
                     File.Copy(photo.FullPath, newPath, true);
-                    ProfileImagePath = newPath;
+                    // Faz upload imediatamente após tirar a foto
+                    using var stream = File.OpenRead(newPath);
+                    var userId = _authService.UserId;
+                    var photoUrl = await _storageService.UploadPhotoAsync(stream, userId);
+                    ProfileImagePath = photoUrl;
+                    await App.Current.MainPage.DisplayAlert("Debug", $"photoUrl: {photoUrl}", "OK");
                 }
             }
             catch (Exception ex)
@@ -169,12 +193,20 @@ namespace caca360.ViewModels
             }
         }
 
-
         public async Task SaveProfileAsync()
         {
             try
             {
                 var userId = _authService.UserId;
+                string photoUrl = ProfileImagePath;
+
+                // Se a foto for um caminho local, faz upload para o Firebase Storage
+                if (!string.IsNullOrEmpty(ProfileImagePath) && File.Exists(ProfileImagePath) && !ProfileImagePath.StartsWith("http"))
+                {
+                    using var stream = File.OpenRead(ProfileImagePath);
+                    photoUrl = await _storageService.UploadPhotoAsync(stream, userId);
+                }
+
                 var profile = new UserProfile
                 {
                     Username = Username,
@@ -183,7 +215,7 @@ namespace caca360.ViewModels
                     Age = Age,
                     HuntingLicense = HuntingLicense,
                     NIF = NIF,
-                    ProfileImagePath = ProfileImagePath
+                    ProfileImagePath = photoUrl
                 };
 
                 await _profileService.SaveUserProfileAsync(userId, profile);

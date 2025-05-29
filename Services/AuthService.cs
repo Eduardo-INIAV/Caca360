@@ -28,6 +28,8 @@ public class AuthService
         {
             throw new Exception("Falha ao obter o token de autenticação.");
         }
+
+        await SecureStorage.SetAsync("auth_token", _auth.FirebaseToken);
     }
 
     public async Task RegisterUserAsync(string username, string email, string password, string idade, string genero, string numeroCacador, string nif, string fotoPerfil)

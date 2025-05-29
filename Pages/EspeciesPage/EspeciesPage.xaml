@@ -4,7 +4,7 @@
              x:DataType="viewModels:EspeciesViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.EspeciesPage"
-             Title="Especies"
+             Title="Espécies"
              BackgroundImageSource="biodiversidade.png">
 
     <ContentPage.BindingContext>

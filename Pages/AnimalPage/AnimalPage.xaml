@@ -1,10 +1,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.AnimalPage"
              Title="">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="16">
+        <VerticalStackLayout Padding="20" Spacing="16" x:DataType="models:Animal">
             <Label x:Name="NomeLabel"
                    FontSize="24"
                    FontAttributes="Bold"
@@ -21,11 +22,11 @@
                    LineBreakMode="WordWrap"/>
 
             <!-- Link no fundo -->
-            <Label Text="Visitar site oficial"
-                   TextColor="Blue"
-                   HorizontalOptions="Center"
-                   FontAttributes="Italic"
-                   TextDecorations="Underline">
+            <Label Text="{Binding Link}"
+                    TextColor="Blue"
+                    HorizontalOptions="Center"
+                    FontAttributes="Italic"
+                    TextDecorations="Underline">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnLinkTapped" />
                 </Label.GestureRecognizers>

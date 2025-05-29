@@ -27,7 +27,7 @@ public partial class MainViewModel : ObservableObject
 
     private static async Task Logout()
     {
-        Preferences.Default.Remove("auth_token");
+        SecureStorage.Remove("auth_token");
         await Shell.Current.GoToAsync("//LoginPage");
     }
 }

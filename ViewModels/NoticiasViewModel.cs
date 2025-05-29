@@ -12,7 +12,7 @@ public class Noticia
     public string? ImageUrl { get; set; }
 }
 
-public partial class NoticiasViewModel : INotifyPropertyChanged
+public partial class NoticiasViewModel
 
 {
     public ObservableCollection<Noticia> Noticias { get; set; } = new();
@@ -42,8 +42,6 @@ public partial class NoticiasViewModel : INotifyPropertyChanged
             }
         }
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     private class NewsApiResponse
     {
