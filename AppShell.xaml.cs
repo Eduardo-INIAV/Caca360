@@ -23,8 +23,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(NoticiasPage), typeof(NoticiasPage));
         Routing.RegisterRoute(nameof(DescPage), typeof(DescPage));
         Routing.RegisterRoute(nameof(WeatherPage), typeof(WeatherPage));
-
-
+        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
     }
 
 }

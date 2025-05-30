@@ -28,14 +28,11 @@ public class AuthService
         {
             throw new Exception("Falha ao obter o token de autenticação.");
         }
-
-        await SecureStorage.SetAsync("auth_token", _auth.FirebaseToken);
     }
 
-    public async Task RegisterUserAsync(string username, string email, string password, string idade, string genero, string numeroCacador, string nif, string fotoPerfil)
+    public async Task<FirebaseAuthLink> RegisterUserAsync(string username, string email, string password, string idade, string genero, string numeroCacador, string nif, string fotoPerfil)
     {
         var auth = await _authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username, true);
-
         // Crie um novo FirebaseClient com o token do utilizador autenticado
         var firebaseClient = new FirebaseClient(
             "https://caca360-app-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -59,9 +56,6 @@ public class AuthService
             .Child("users")
             .Child(auth.User.LocalId)
             .PutAsync(userProfile);
+        return auth;
     }
 }
-
-
-
-

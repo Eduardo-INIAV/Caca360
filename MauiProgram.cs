@@ -28,7 +28,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<AuthService>();
         builder.Services.AddSingleton<LocationService>();
         builder.Services.AddSingleton<WeatherService>();
-        builder.Services.AddSingleton<StorageService>();
         builder.Services.AddSingleton<FirebaseAuthProvider>(s =>
              new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAcl1PATG5MD_bL3E3He5AjAUJrrscnMoU")));
         builder.Services.AddSingleton<ProfileService>(s =>

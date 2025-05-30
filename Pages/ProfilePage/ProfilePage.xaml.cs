@@ -1,4 +1,4 @@
-﻿using caca360.Services; // para ProfileService
+﻿using caca360.Services;
 using caca360.ViewModels;
 
 namespace caca360;
@@ -13,10 +13,8 @@ public partial class ProfilePage : ContentPage
 
         var profileService = MauiProgram.ServiceProvider.GetRequiredService<ProfileService>();
         var authService = MauiProgram.ServiceProvider.GetRequiredService<AuthService>();
-        var storageService = MauiProgram.ServiceProvider.GetRequiredService<StorageService>();
-        var userId = authService.UserId;
 
-        _viewModel = new ProfileViewModel(profileService, authService, storageService );
+        _viewModel = new ProfileViewModel(profileService, authService);
         BindingContext = _viewModel;
 
         var backButton = new ToolbarItem
