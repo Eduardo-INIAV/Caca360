@@ -11,7 +11,7 @@ public partial class LagoPage : ContentPage
 
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>

@@ -35,7 +35,8 @@ public partial class EspeciesViewModel : ObservableObject
             new() { Nome = "Aves", Imagem = "rola1.png" },
             new() { Nome = "Mamiferos", Imagem = "rapousa1.png" },
             new() { Nome = "Lagomorfos", Imagem = "coelho1.png" },
-            
+            new() { Nome = "Ungulados", Imagem = "veado.png" },
+
         };
     }
 

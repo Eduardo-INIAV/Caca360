@@ -25,8 +25,8 @@
              HorizontalOptions="End"
              VerticalOptions="Start"
              Margin="0,70,10,0"
-             WidthRequest="80"
-             HeightRequest="32"
+             WidthRequest="60"
+             HeightRequest="25"
              Grid.Row="0"
              Grid.ColumnSpan="2" /> 
 

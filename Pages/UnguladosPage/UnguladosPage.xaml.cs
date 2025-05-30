@@ -1,13 +1,14 @@
-﻿using caca360.ViewModels;
+using caca360.ViewModels;
 
 namespace caca360;
-public partial class MamiferosPage : ContentPage
+
+public partial class UnguladosPage : ContentPage
 {
-    public MamiferosPage()
+    public UnguladosPage()
     {
         InitializeComponent();
-        BindingContext = new MamiferosViewModel();
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+        BindingContext = new UnguladosViewModel();
+        Shell.SetBackButtonBehavior( this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
         {
             Text = "Voltar",
@@ -23,17 +24,16 @@ public partial class MamiferosPage : ContentPage
 
     private void BackButtonBehavior()
     {
-        // Faz a navegação para a página desejada
+        // Faz a nUnguladosgação para a página desejada
         this.Dispatcher.Dispatch(async () =>
         {
             await Shell.Current.GoToAsync("//EspeciesPage");
         });
     }
 
-
     protected override bool OnBackButtonPressed()
     {
-        // Faz a navegação para a página desejada
+        // Faz a nUnguladosgação para a página desejada
         this.Dispatcher.Dispatch(async () =>
         {
             await Shell.Current.GoToAsync("//EspeciesPage");

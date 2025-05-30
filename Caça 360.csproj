@@ -84,9 +84,8 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Firebase.Auth" Version="1.0.0" />
 		<PackageReference Include="FirebaseDatabase.net" Version="5.0.0" />
-		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,6 +98,9 @@
 	  <Compile Update="Pages\CensosPage\CensosPage.xaml.cs">
 	    <DependentUpon>CensosPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DescPage\DescPage.xaml.cs">
+	    <DependentUpon>DescPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\LagoPage\LagoPage.xaml.cs">
 	    <DependentUpon>LagoPage.xaml</DependentUpon>
 	  </Compile>
@@ -108,8 +110,11 @@
 	  <Compile Update="Pages\NoticiasPage\NoticiasPage.xaml.cs">
 	    <DependentUpon>NoticiasPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TempoPage\TempoPage.xaml.cs">
-	    <DependentUpon>TempoPage.xaml</DependentUpon>
+	  <Compile Update="Pages\UnguladosPage\UnguladosPage.xaml.cs">
+	    <DependentUpon>UnguladosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\WeatherPage\WeatherPage.xaml.cs">
+	    <DependentUpon>WeatherPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -130,6 +135,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DashboardPage\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\DescPage\DescPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\EspeciesPage\EspeciesPage.xaml">
@@ -159,7 +167,10 @@
 	  <MauiXaml Update="Pages\ProfilePage\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TempoPage\TempoPage.xaml">
+	  <MauiXaml Update="Pages\UnguladosPage\UnguladosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WeatherPage\WeatherPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ZonasPage\ZonasPage.xaml">

@@ -13,7 +13,7 @@ public partial class NoticiasPage : ContentPage
             _ = vm.BuscarNoticiasAsync("caçadores em portugal");
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>

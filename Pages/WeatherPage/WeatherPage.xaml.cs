@@ -1,17 +1,21 @@
-﻿namespace caca360;
+﻿using caca360.ViewModels;
 
-public partial class TempoPage : ContentPage
+namespace caca360;
+
+public partial class WeatherPage : ContentPage
 {
-    public TempoPage()
+    private readonly WeatherViewModel _viewModel;
+
+    public WeatherPage()
     {
         InitializeComponent();
-
-        var TempoUrl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/";
-        TempoWebView.Source = TempoUrl;
+        _viewModel = new WeatherViewModel();
+        BindingContext = _viewModel;
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+
         var backButton = new ToolbarItem
         {
-            IconImageSource = "back_arrow.png",
+            Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
@@ -20,6 +24,19 @@ public partial class TempoPage : ContentPage
             })
         };
         ToolbarItems.Add(backButton);
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        try
+        {
+            await _viewModel.LoadCurrentWeatherAsync();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message + (ex.InnerException != null ? "\nDetalhes: " + ex.InnerException.Message : ""), "OK");
+        }
     }
 
     private void BackButtonBehavior()
@@ -31,12 +48,9 @@ public partial class TempoPage : ContentPage
         });
     }
 
-
     protected override bool OnBackButtonPressed()
     {
         Shell.Current.GoToAsync("//InfosPage");
         return true;
     }
-
 }
-

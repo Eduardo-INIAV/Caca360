@@ -34,7 +34,7 @@ public partial class CategoriasViewModel : ObservableObject
         {
             new() { Nome = "Espécies Cinegéticas", Imagem = "todos.png" },
             new() { Nome = "Cães", Imagem = "caes1.png" },
-            new() { Nome = "Armas", Imagem = "cacadeira1.png" },
+            new() { Nome = "Armas e Munições", Imagem = "cacadeira1.png" },
             new() { Nome = "Noticias", Imagem = "noticias1.png" },
             new() { Nome = "Tempo", Imagem = "meteo2.png" }
 
@@ -51,14 +51,14 @@ public partial class CategoriasViewModel : ObservableObject
             case "Cães":
                 await Shell.Current.GoToAsync(nameof(CaesPage));
                 break;
-            case "Armas":
+            case "Armas e Munições":
                 await Shell.Current.GoToAsync(nameof(ArmasPage));
                 break;
             case "Noticias":
                 await Shell.Current.GoToAsync(nameof(NoticiasPage));
                 break;
             case "Tempo":
-                await Shell.Current.GoToAsync(nameof(TempoPage));
+                await Shell.Current.GoToAsync(nameof(WeatherPage));
                 break;
         }
     }

@@ -1,4 +1,5 @@
 using caca360.ViewModels;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace caca360;
 
@@ -8,7 +9,7 @@ public partial class RegisterPage : ContentPage
     {
         InitializeComponent();
         BindingContext = vm;
-        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = true });
         var backButton = new ToolbarItem
         {
             Text = "Voltar",
@@ -19,15 +20,17 @@ public partial class RegisterPage : ContentPage
                 BackButtonBehavior();
             })
         };
-        ToolbarItems.Add(backButton);
+    ToolbarItems.Add(backButton);
     }
 
     private void BackButtonBehavior()
     {
+        // Faz a navegação para a página desejada
         this.Dispatcher.Dispatch(async () =>
         {
             await Shell.Current.GoToAsync("//LoginPage");
         });
+
     }
 
     protected override bool OnBackButtonPressed()
@@ -35,5 +38,6 @@ public partial class RegisterPage : ContentPage
         Shell.Current.GoToAsync("//LoginPage");
         return true;
     }
+
 }
 

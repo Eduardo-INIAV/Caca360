@@ -1,6 +1,6 @@
-namespace caca360.Models
+﻿namespace caca360.Models
 {
-    public class Animal
+    public class Desc
     {
         public string? Nome { get; set; }
         public string? Texto { get; set; }
@@ -9,7 +9,5 @@ namespace caca360.Models
         public string? Categoria { get; set; }
 
         public string? Imagem { get; set; }
-
-        public string? Link { get; set; }
     }
 }

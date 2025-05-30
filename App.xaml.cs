@@ -1,31 +1,28 @@
-﻿using caca360.ViewModels;
-using caca360.Services;
-
-namespace caca360;
+﻿namespace caca360;
 
 public partial class App : Application
 {
     public App()
     {
         InitializeComponent();
-        MainPage = new ContentPage(); // Placeholder, será substituído após checagem
-        CheckLoginStatusAsync();
+
+        // Define o AppShell como a página principal
+        MainPage = new AppShell();
+
+        Application.Current.UserAppTheme = AppTheme.Light;
     }
 
-
-    private async void CheckLoginStatusAsync()
+    protected override void OnStart()
     {
-        var token = await SecureStorage.GetAsync("auth_token");
-        if (!string.IsNullOrEmpty(token))
+        base.OnStart();
+
+        // Verifica se o token de autenticação está armazenado
+        var token = Preferences.Default.Get("auth_token", string.Empty);
+
+        if (string.IsNullOrEmpty(token))
         {
-            MainPage = new AppShell();
-        }
-        else
-        {
-            var loginVm = new LoginViewModel(
-                MauiProgram.ServiceProvider.GetRequiredService<AuthService>()
-            );
-            MainPage = new NavigationPage(new LoginPage(loginVm));
+            // Redireciona para a página de login
+            Shell.Current.GoToAsync("//LoginPage");
         }
     }
 }

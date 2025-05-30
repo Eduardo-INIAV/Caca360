@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="caca360.AnimalPage"
+             x:Class="caca360.DescPage"
              Title="">
 
     <ScrollView>
@@ -11,7 +11,7 @@
                    TextColor="Black"
                    HorizontalOptions="Center" />
 
-            <Image x:Name="AnimalImage"
+            <Image x:Name="DescImage"
                    HeightRequest="200"
                    HorizontalOptions="Center" />
 
@@ -20,16 +20,6 @@
                    TextColor="Black"
                    LineBreakMode="WordWrap"/>
 
-            <!-- Link no fundo -->
-            <Label Text="Clique para mais Informações"
-                   TextColor="Blue"
-                   HorizontalOptions="Center"
-                   FontAttributes="Italic"
-                   TextDecorations="Underline">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnLinkTapped" />
-                </Label.GestureRecognizers>
-            </Label>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

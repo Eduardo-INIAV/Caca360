@@ -42,7 +42,6 @@ public partial class NoticiasViewModel
             }
         }
     }
-
     private class NewsApiResponse
     {
         public List<Article>? Articles { get; set; }

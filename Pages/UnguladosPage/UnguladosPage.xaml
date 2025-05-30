@@ -1,0 +1,46 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:caca360.ViewModels"
+             x:DataType="viewModels:UnguladosViewModel"
+             xmlns:models="clr-namespace:caca360.Models"
+             x:Class="caca360.UnguladosPage"
+             Title="Unguladoss"
+             BackgroundImageSource="biodiversidade.png">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" />
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout Padding="24" Spacing="20">
+        <CollectionView ItemsSource="{Binding Ungulados}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding AnimalSelecionado, Mode=TwoWay}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Animal">
+                    <Border StrokeShape="RoundRectangle 20"
+                     Background="#95FFFFFF"
+                     StrokeThickness="0"
+                     Padding="0"
+                     Margin="0,10"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill">
+                        <HorizontalStackLayout Padding="10" Spacing="12" VerticalOptions="Center">
+                            <Border
+                                 Stroke="White"
+                                 StrokeThickness="2"
+                                 StrokeShape="RoundRectangle 16"
+                                 Background="White"
+                                 WidthRequest="70"
+                                 HeightRequest="80"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                                <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Border>
+                            <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
