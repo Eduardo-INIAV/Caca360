@@ -8,10 +8,10 @@ namespace caca360;
 [QueryProperty(nameof(Imagem), "imagem")]
 [QueryProperty(nameof(Especie), "especie")]
 
+
 public partial class AnimalPage : ContentPage
 {
     public string Especie { get; set; } = string.Empty;
-
     public string Nome
     {
         set => Title = value;
@@ -41,7 +41,7 @@ public partial class AnimalPage : ContentPage
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
         {
-            Text="Voltar",
+            IconImageSource = "back_arrow.png",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
@@ -79,7 +79,7 @@ public partial class AnimalPage : ContentPage
         else
         {
             // Se não houver espécie, volta para página anterior padrão
-            await Shell.Current.GoToAsync("//InfosPage");
+            await Shell.Current.GoToAsync("..");
         }
     }
 
@@ -90,11 +90,6 @@ public partial class AnimalPage : ContentPage
             // Voltar para a página da espécie (ex: AvesPage)
             Shell.Current.GoToAsync($"//{Especie}Page");
             return true; // cancela o back padrão
-        }
-        else
-        {
-            // Se não houver espécie, volta para página anterior padrão
-            Shell.Current.GoToAsync("//InfosPage");
         }
         return base.OnBackButtonPressed();
     }

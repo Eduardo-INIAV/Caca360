@@ -26,9 +26,12 @@ dotnet_diagnostic.IDE0021.severity = none
 
 # CA1822: Marcar membros como estáticos
 dotnet_diagnostic.CA1822.severity = none
+<<<<<<< HEAD
 
 # IDE0270: Usar a expressão de união
 dotnet_diagnostic.IDE0270.severity = none
 
 # IDE0290: Usar construtor primário
 dotnet_diagnostic.IDE0290.severity = none
+=======
+>>>>>>> parent of c0511f0 (update)

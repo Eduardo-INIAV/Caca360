@@ -54,9 +54,7 @@ public partial class LoginViewModel : INotifyPropertyChanged
                 return;
             }
 
-            await _authService.LoginAsync(Email, Password);
-
-            var token = _authService.Token;  // Pega o token depois do login
+            var token = await _authService.LoginAsync(Email, Password);
             if (string.IsNullOrEmpty(token))
             {
                 throw new Exception("Token inválido.");
@@ -70,7 +68,6 @@ public partial class LoginViewModel : INotifyPropertyChanged
             await App.Current.MainPage.DisplayAlert("Erro", $"Falha no login: {ex.Message}", "OK");
         }
     }
-
     private async Task OnChangePasswordAsync()
     {
         try

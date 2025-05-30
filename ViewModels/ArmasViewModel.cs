@@ -7,23 +7,22 @@ namespace caca360.ViewModels;
 
 public partial class ArmasViewModel : ObservableObject
 {
-    
-    public ObservableCollection<Desc> Armas { get; }
+    public ObservableCollection<Animal> Armas { get; }
 
-    private Desc? _descSelecionado = null!;
+    private Animal? _animalSelecionado = null!;
 
-    public Desc? DescSelecionado
+    public Animal? AnimalSelecionado
     {
-        get => _descSelecionado;
+        get => _animalSelecionado;
         set
         {
-            if (_descSelecionado != value)
+            if (_animalSelecionado != value)
             {
-                _descSelecionado = value;
-                if (_descSelecionado != null)
+                _animalSelecionado = value;
+                if (_animalSelecionado != null)
                 {
-                    SelecionarArmas(_descSelecionado);
-                    _descSelecionado = null; // para permitir nova seleção
+                    SelecionarAnimal(_animalSelecionado);
+                    _animalSelecionado = null; // para permitir nova seleção
                 }
             }
         }
@@ -35,7 +34,7 @@ public partial class ArmasViewModel : ObservableObject
 
     public ArmasViewModel()
     {
-        Armas = new ObservableCollection<Desc>
+        Armas = new ObservableCollection<Animal>
         {
             new() { Nome = "Caçadeira", Descricao = "Uma caçadeira de canos paralelos, também conhecida como \"paralela\", é uma espingarda com dois canos dispostos lado a lado, geralmente usados para caça e tiro esportivo. Essas espingardas são apreciadas por sua precisão e facilidade de uso, permitindo ao usuário disparar dois projéteis simultaneamente ou escolher qual cano disparar. \r\n", Categoria = "Armas", Imagem = "cacadeira1.png" },
             new() { Nome = "Brenner BF18", Descricao = "O Brenner BF18 Preto é um equipamento robusto e eficiente, ideal para quem procura desempenho e design num só produto. Com 71 cm de diâmetro, oferece uma ventilação poderosa, perfeita para espaços amplos, como cozinhas industriais, áreas de serviço ou ambientes que exijam circulação intensiva de ar.\r\n\r\nFabricado com materiais resistentes e acabamento em preto fosco, o BF18 alia durabilidade e elegância, adaptando-se facilmente a diferentes estilos de decoração. O seu motor de alto rendimento garante um funcionamento silencioso e eficaz, mesmo em longos períodos de uso.", Categoria = "Armas", Imagem = "bf18.png" },
@@ -45,18 +44,18 @@ public partial class ArmasViewModel : ObservableObject
             new() { Nome = "Remington 870 Express", Descricao = "A Remington 870 Express é uma espingarda de repetição manual (pump-action) amplamente reconhecida pela sua robustez e versatilidade. Ideal para a caça menor e tiro desportivo, apresenta um design clássico e um sistema de funcionamento fiável. Com uma vasta gama de acessórios disponíveis, adapta-se facilmente a diferentes necessidades e preferências do utilizador.", Categoria = "Armas", Imagem = "remington.png" },
         };
 
-        SelecionarArmasCommand = new Command<Desc>(async desc =>
+        SelecionarArmasCommand = new Command<Animal>(async animal =>
         {
-            if (desc is null)
+            if (animal is null)
                 return;
 
-            // nArmasga para página do Armas
-            await Shell.Current.GoToAsync($"{nameof(ArmasPage)}?nome={desc.Nome}&descricao={desc.Descricao}&imagem={desc.Imagem}&categoria=Armas");
+            // nArmasga para página do animal
+            await Shell.Current.GoToAsync($"{nameof(AnimalPage)}?nome={animal.Nome}&descricao={animal.Descricao}&imagem={animal.Imagem}");
         });
     }
 
-    private void SelecionarArmas(Desc desc)
+    private void SelecionarAnimal(Animal animal)
     {
-        SelecionarArmasCommand.Execute(desc);
+        SelecionarArmasCommand.Execute(animal);
     }
 }

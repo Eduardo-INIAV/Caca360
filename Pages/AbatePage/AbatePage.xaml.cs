@@ -11,7 +11,7 @@ public partial class AbatePage : ContentPage
 
         var backButton = new ToolbarItem
         {
-            Text = "Voltar",
+            IconImageSource = "back_arrow.png",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>

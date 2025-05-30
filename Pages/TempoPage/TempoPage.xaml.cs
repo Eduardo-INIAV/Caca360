@@ -1,14 +1,14 @@
 ﻿namespace caca360;
 
-public partial class DashboardPage : ContentPage
+public partial class TempoPage : ContentPage
 {
-    public DashboardPage()
+    public TempoPage()
     {
         InitializeComponent();
 
-        var surveyUrl = "https://portalgeo.iniav.pt/portal/apps/opsdashboard/index.html#/0bbdae73f4184da5b88fe55d65b0394e";
-        ArcGisWebView.Source = surveyUrl;
-
+        var TempoUrl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/";
+        TempoWebView.Source = TempoUrl;
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
         {
             IconImageSource = "back_arrow.png",
@@ -27,15 +27,16 @@ public partial class DashboardPage : ContentPage
         // Faz a navegação para a página desejada
         this.Dispatcher.Dispatch(async () =>
         {
-            await Shell.Current.GoToAsync("//MainPage");
+            await Shell.Current.GoToAsync("//InfosPage");
         });
-    
     }
 
 
     protected override bool OnBackButtonPressed()
     {
-        Shell.Current.GoToAsync("//MainPage");
+        Shell.Current.GoToAsync("//InfosPage");
         return true;
     }
+
 }
+

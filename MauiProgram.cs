@@ -26,6 +26,7 @@ public static class MauiProgram
 
         // Serviços
         builder.Services.AddSingleton<AuthService>();
+<<<<<<< HEAD
         builder.Services.AddSingleton<LocationService>();
         builder.Services.AddSingleton<WeatherService>();
         builder.Services.AddSingleton<FirebaseAuthProvider>(s =>
@@ -42,6 +43,8 @@ public static class MauiProgram
                     }));
         });
 
+=======
+>>>>>>> parent of c0511f0 (update)
 
         // ViewModels
         builder.Services.AddTransient<LoginViewModel>();
@@ -56,7 +59,6 @@ public static class MauiProgram
         builder.Services.AddTransient<EspeciesViewModel>();
         builder.Services.AddTransient<ArmasViewModel>();
         builder.Services.AddTransient<NoticiasViewModel>();
-        builder.Services.AddTransient<WeatherViewModel>();
 
         // Páginas
         builder.Services.AddTransient<LoginPage>();
@@ -76,8 +78,7 @@ public static class MauiProgram
         builder.Services.AddTransient<EspeciesPage>();
         builder.Services.AddTransient<ArmasPage>();
         builder.Services.AddTransient<NoticiasPage>();
-        builder.Services.AddTransient<WeatherPage>();
-        builder.Services.AddTransient<DescPage>();
+        builder.Services.AddTransient<TempoPage>();
 
         var app = builder.Build();
         ServiceProvider = app.Services;

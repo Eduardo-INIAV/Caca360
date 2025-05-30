@@ -23,7 +23,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Categoria">
                         <Border StrokeShape="RoundRectangle 20"
-                                Background="Transparent"
+                                Background="#95FFFFFF"
                                 StrokeThickness="0"
                                 Padding="0"
                                 Margin="0,10"
@@ -41,7 +41,7 @@
                                 HorizontalOptions="Center">
                                     <Image Source="{Binding Imagem}" WidthRequest="150" HeightRequest="110" VerticalOptions="Center" HorizontalOptions="Center"/>
                                 </Border>
-                                <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center" TextColor="White"/>
+                                <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center" TextColor="Black"/>
                             </HorizontalStackLayout>
                         </Border>
                     </DataTemplate>

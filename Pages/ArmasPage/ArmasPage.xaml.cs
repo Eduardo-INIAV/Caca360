@@ -10,7 +10,7 @@ public partial class ArmasPage : ContentPage
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         var backButton = new ToolbarItem
         {
-            Text = "Voltar",
+            IconImageSource = "back_arrow.png",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
             Command = new Command(() =>
