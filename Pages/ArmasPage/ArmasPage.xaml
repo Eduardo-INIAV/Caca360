@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.ArmasPage"
              Title="Armas"
-             BackgroundImageSource="campo.png">
+             BackgroundImageSource="arma.png">
 
     <ContentPage.BindingContext>
         <viewModels:ArmasViewModel />
@@ -22,7 +22,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Desc">
                     <Border StrokeShape="RoundRectangle 20"
-                 Background="Transparent"
+                 Background="#90000000"
                  StrokeThickness="0"
                  Padding="0"
                  Margin="0,10"
@@ -38,7 +38,7 @@
                              HeightRequest="80"
                              VerticalOptions="Center"
                              HorizontalOptions="Center">
-                                <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Image Source="{Binding Imagem}" WidthRequest="85" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
                             </Border>
                             <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center" TextColor="White"/>
                         </HorizontalStackLayout>
