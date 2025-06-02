@@ -36,7 +36,14 @@ namespace caca360.ViewModels
         public string Email
         {
             get => _email;
-            private set { if (_email != value) { _email = value; OnPropertyChanged(nameof(Email)); } }
+            set
+            {
+                if (_email != value)
+                {
+                    _email = value;
+                    OnPropertyChanged(nameof(Email));
+                }
+            }
         }
 
         public ObservableCollection<string> Genders { get; } = new() { "Masculino", "Feminino", "Outro" };
@@ -137,7 +144,6 @@ namespace caca360.ViewModels
         public async Task LoadProfileAsync()
         {
             var userId = _authService.UserId;
-            await App.Current.MainPage.DisplayAlert("Debug", $"userId: {userId}", "OK");
 
             if (string.IsNullOrEmpty(userId))
             {

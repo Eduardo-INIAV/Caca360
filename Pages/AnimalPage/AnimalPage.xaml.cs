@@ -1,4 +1,4 @@
-﻿using caca360.ViewModels;
+using caca360.ViewModels;
 using caca360.Models;
 
 namespace caca360;

@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.CaesPage"
              Title="Caes"
-             BackgroundImageSource="cacadorcao.png">
+             BackgroundImageSource="ccao.png">
 
     <ContentPage.BindingContext>
         <viewModels:CaesViewModel />

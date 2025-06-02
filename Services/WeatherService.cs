@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net.Http;
 using System.Text.Json;
 using caca360.Models;
@@ -44,13 +45,15 @@ public class WeatherService
 
     public async Task<string> GetLocationNameAsync(double lat, double lon)
     {
-        string url = $"https://api.weatherapi.com/v1/current.json?key={_apiKey}&q={lat},{lon}";
+        using var client = new HttpClient();
+        string url = $"https://api.weatherapi.com/v1/current.json?key={_apiKey}&q={lat.ToString(CultureInfo.InvariantCulture)},{lon.ToString(CultureInfo.InvariantCulture)}";
 
-        var response = await _client.GetAsync(url);
+        var response = await client.GetAsync(url);
         if (!response.IsSuccessStatusCode)
             throw new Exception($"Erro ao obter nome da localização: {response.StatusCode}");
 
         var json = await response.Content.ReadAsStringAsync();
+
         using var doc = JsonDocument.Parse(json);
 
         var location = doc.RootElement.GetProperty("location");

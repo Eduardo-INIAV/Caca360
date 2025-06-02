@@ -53,6 +53,9 @@ public partial class EspeciesViewModel : ObservableObject
             case "Lagomorfos":
                 await Shell.Current.GoToAsync(nameof(LagoPage));
                 break;
+            case "Ungulados":
+                await Shell.Current.GoToAsync(nameof(UnguladosPage));
+                break;
 
         }
     }

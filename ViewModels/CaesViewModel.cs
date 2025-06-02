@@ -22,10 +22,12 @@ public partial class CaesViewModel : ObservableObject
             if (_descSelecionado != value)
             {
                 _descSelecionado = value;
+                OnPropertyChanged(nameof(DescSelecionado)); // Notifica a UI da seleção
                 if (_descSelecionado != null)
                 {
                     SelecionarDesc(_descSelecionado);
-                    _descSelecionado = null; // para permitir nova seleção
+                    _descSelecionado = null;
+                    OnPropertyChanged(nameof(DescSelecionado)); // Notifica a UI da limpeza
                 }
             }
         }

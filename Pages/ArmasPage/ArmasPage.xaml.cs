@@ -1,4 +1,4 @@
-﻿using caca360.ViewModels;
+using caca360.ViewModels;
 
 namespace caca360;
 public partial class ArmasPage : ContentPage

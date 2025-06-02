@@ -1,4 +1,4 @@
-﻿// Projeto base MAUI para "Caça 360"
+// Projeto base MAUI para "Caça 360"
 using Firebase.Database;
 using Firebase.Auth;
 using caca360.Services;

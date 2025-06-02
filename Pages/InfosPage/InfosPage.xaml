@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.InfosPage"
              Title="Categorias"
-             BackgroundImageSource="cacador.png">
+             BackgroundImageSource="cacador1.png">
 
     <ContentPage.BindingContext>
         <viewModels:CategoriasViewModel />

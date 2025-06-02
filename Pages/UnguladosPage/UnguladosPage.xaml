@@ -4,12 +4,8 @@
              x:DataType="viewModels:UnguladosViewModel"
              xmlns:models="clr-namespace:caca360.Models"
              x:Class="caca360.UnguladosPage"
-             Title="Unguladoss"
-             BackgroundImageSource="biodiversidade.png">
-
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
+             Title="Ungulados"
+             BackgroundImageSource="ungulados.png">
 
     <VerticalStackLayout Padding="24" Spacing="20">
         <CollectionView ItemsSource="{Binding Ungulados}"
@@ -18,7 +14,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Border StrokeShape="RoundRectangle 20"
-                     Background="#95FFFFFF"
+                     Background="#90000000"
                      StrokeThickness="0"
                      Padding="0"
                      Margin="0,10"
@@ -30,13 +26,13 @@
                                  StrokeThickness="2"
                                  StrokeShape="RoundRectangle 16"
                                  Background="White"
-                                 WidthRequest="70"
+                                 WidthRequest="80"
                                  HeightRequest="80"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center">
-                                <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Image Source="{Binding Imagem}" WidthRequest="115" HeightRequest="90" VerticalOptions="Center" HorizontalOptions="Center"/>
                             </Border>
-                            <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center"/>
+                            <Label Text="{Binding Nome}" FontSize="18" VerticalOptions="Center" TextColor="White"/>
                         </HorizontalStackLayout>
                     </Border>
                 </DataTemplate>

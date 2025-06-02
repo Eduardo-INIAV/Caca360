@@ -21,7 +21,7 @@
                    LineBreakMode="WordWrap"/>
 
             <!-- Link no fundo -->
-            <Label Text="Clique para mais Informações"
+            <Label Text="Clique para mais InformaÃ§Ãµes"
                    TextColor="Blue"
                    HorizontalOptions="Center"
                    FontAttributes="Italic"

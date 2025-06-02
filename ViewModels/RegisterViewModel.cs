@@ -134,6 +134,23 @@ namespace caca360.ViewModels
 
         private async Task RegisterAsync()
         {
+            // Validação dos campos obrigatórios
+            if (string.IsNullOrWhiteSpace(Username) ||
+                string.IsNullOrWhiteSpace(Email) ||
+                string.IsNullOrWhiteSpace(Password) ||
+                string.IsNullOrWhiteSpace(Age) ||
+                string.IsNullOrWhiteSpace(SelectedGender) ||
+                string.IsNullOrWhiteSpace(HuntingLicense) ||
+                string.IsNullOrWhiteSpace(NIF) ||
+                string.IsNullOrWhiteSpace(ProfileImagePath))
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Erro",
+                    "Por favor preencher todos os campos",
+                    "OK");
+                return;
+            }
+
             try
             {
                 await _authService.RegisterUserAsync(

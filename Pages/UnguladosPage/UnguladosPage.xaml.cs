@@ -21,7 +21,6 @@ public partial class UnguladosPage : ContentPage
         };
         ToolbarItems.Add(backButton);
     }
-
     private void BackButtonBehavior()
     {
         // Faz a nUnguladosgação para a página desejada

@@ -50,7 +50,7 @@ public partial class WeatherViewModel : INotifyPropertyChanged
                 Forecast.Add(item);
 
             LocationName = name;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LocationName)));
         });
     }
+
 }
