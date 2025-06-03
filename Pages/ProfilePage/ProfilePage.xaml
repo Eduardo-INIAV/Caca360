@@ -8,16 +8,6 @@
              Title="Perfil"
              BackgroundImageSource="fundo.png">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:StringNotEmptyToBoolConverter x:Key="StringNotEmptyToBoolConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
-
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 

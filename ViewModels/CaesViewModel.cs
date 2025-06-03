@@ -6,8 +6,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace caca360.ViewModels;
 
 public partial class CaesViewModel : ObservableObject
-
-
 {
     public ObservableCollection<Desc> Caes { get; }
     public string Categoria { get; } = "Caes";

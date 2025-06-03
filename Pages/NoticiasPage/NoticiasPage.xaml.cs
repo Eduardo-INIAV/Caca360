@@ -4,40 +4,41 @@ namespace caca360;
 
 public partial class NoticiasPage : ContentPage
 {
+    private readonly NoticiasViewModel viewModel = new();
+
     public NoticiasPage()
     {
         InitializeComponent();
+
+        BindingContext = viewModel;
+
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
 
-        if (BindingContext is NoticiasViewModel vm)
-            _ = vm.BuscarNoticiasAsync("caçadores em portugal");
+        // Carrega as notícias ao abrir a página
+        _ = viewModel.BuscarNoticiasAsync("caçadores portugal");
+
         var backButton = new ToolbarItem
         {
             Text = "Voltar",
             Priority = 0,
             Order = ToolbarItemOrder.Primary,
-            Command = new Command(() =>
-            {
-                BackButtonBehavior();
-            })
+            Command = new Command(BackButtonBehavior)
         };
         ToolbarItems.Add(backButton);
     }
 
     private void BackButtonBehavior()
     {
-        // Faz a navegação para a página desejada
-        this.Dispatcher.Dispatch(async () =>
+        // Navega para a página desejada
+        Dispatcher.Dispatch(async () =>
         {
             await Shell.Current.GoToAsync("//InfosPage");
         });
     }
-    
 
     private async void OnBuscarClicked(object sender, EventArgs e)
     {
-        if (BindingContext is NoticiasViewModel vm)
-            await vm.BuscarNoticiasAsync("caçadores em portugal");
+        await viewModel.BuscarNoticiasAsync("caçadores portugal");
     }
 
     private async void OnAbrirNoticia(object sender, EventArgs e)
@@ -52,5 +53,3 @@ public partial class NoticiasPage : ContentPage
         return true;
     }
 }
-
-

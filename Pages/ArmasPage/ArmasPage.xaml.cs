@@ -28,18 +28,13 @@ public partial class ArmasPage : ContentPage
         {
             await Shell.Current.GoToAsync("//InfosPage");
         });
-    
+
     }
 
     protected override bool OnBackButtonPressed()
     {
-        // Faz a navegação para a página desejada
-        this.Dispatcher.Dispatch(async () =>
-        {
-            await Shell.Current.GoToAsync("//InfosPage");
-        });
-
-        // Retorna true para impedir o comportamento padrão (fechar a página atual)
+        Shell.Current.GoToAsync("//InfosPage");
         return true;
     }
+
 }

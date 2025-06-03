@@ -7,15 +7,6 @@
              Title="Caes"
              BackgroundImageSource="ccao.png">
 
-    <ContentPage.BindingContext>
-        <viewModels:CaesViewModel />
-    </ContentPage.BindingContext>
-    
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
-
-
     <VerticalStackLayout Padding="24" Spacing="20">
         <CollectionView ItemsSource="{Binding Caes}"
                     SelectionMode="Single"
@@ -23,12 +14,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Desc">
                     <Border StrokeShape="RoundRectangle 20"
-                 Background="Transparent"
-                 StrokeThickness="0"
-                 Padding="0"
-                 Margin="0,10"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Fill">
+                             Background="#90000000"
+                             StrokeThickness="0"
+                             Padding="0"
+                             Margin="0,10"
+                             HorizontalOptions="Fill"
+                             VerticalOptions="Fill">
                         <HorizontalStackLayout Padding="10" Spacing="12" VerticalOptions="Center">
                             <Border
                              Stroke="Gray"

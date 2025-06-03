@@ -6,17 +6,7 @@
              x:Class="caca360.MamiferosPage"
              Title="Mamiferos"
              BackgroundImageSource="mamiferos.png">
-
-    <ContentPage.BindingContext>
-        <viewModels:MamiferosViewModel />
-    </ContentPage.BindingContext>
-
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
-    
-    
-
+ 
     <VerticalStackLayout Padding="24" Spacing="20">
         <CollectionView ItemsSource="{Binding Mamiferos}"
                     SelectionMode="Single"

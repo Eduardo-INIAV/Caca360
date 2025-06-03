@@ -9,25 +9,26 @@ public partial class MamiferosViewModel : ObservableObject
 {
     public ObservableCollection<Animal> Mamiferos { get; }
 
-    private Animal? _animalSelecionado = null!;
+    private Animal? _AnimalSelecionado = null!;
 
     public Animal? AnimalSelecionado
     {
-        get => _animalSelecionado;
+        get => _AnimalSelecionado;
         set
         {
-            if (_animalSelecionado != value)
+            if (_AnimalSelecionado != value)
             {
-                _animalSelecionado = value;
-                if (_animalSelecionado != null)
+                _AnimalSelecionado = value;
+                OnPropertyChanged(nameof(AnimalSelecionado)); // Notifica a UI da seleção
+                if (_AnimalSelecionado != null)
                 {
-                    SelecionarAnimal(_animalSelecionado);
-                    _animalSelecionado = null; // para permitir nova seleção
+                    SelecionarAnimal(_AnimalSelecionado);
+                    _AnimalSelecionado = null;
+                    OnPropertyChanged(nameof(AnimalSelecionado)); // Notifica a UI da limpeza
                 }
             }
         }
     }
-
 
 
     public ICommand SelecionarMamiferosCommand { get; }

@@ -7,15 +7,6 @@
              Title="Lagomorfos"
              BackgroundImageSource="coelho2.png">
 
-    <ContentPage.BindingContext>
-        <viewModels:LagoViewModel />
-    </ContentPage.BindingContext>
-    
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
-
-
     <VerticalStackLayout Padding="24" Spacing="20">
         <CollectionView ItemsSource="{Binding Lago}"
                     SelectionMode="Single"

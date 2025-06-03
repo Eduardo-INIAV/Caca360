@@ -7,8 +7,4 @@
         <WebView x:Name="CensosWebView" HeightRequest="800" />
 	</VerticalStackLayout>
 
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="True" />
-    </Shell.BackButtonBehavior>
-    
 </ContentPage>

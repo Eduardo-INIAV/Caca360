@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 
 namespace caca360.ViewModels;
 
@@ -12,36 +13,64 @@ public class Noticia
     public string? ImageUrl { get; set; }
 }
 
-public partial class NoticiasViewModel
-
+public partial class NoticiasViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<Noticia> Noticias { get; set; } = new();
-
-    public async Task BuscarNoticiasAsync(string hashtag)
+    private ObservableCollection<Noticia> noticias = new();
+    public ObservableCollection<Noticia> Noticias
     {
-        // Exemplo com NewsAPI (substitua pela API desejada)
-        var apiKey = "b9ababd6fcf34185b1994e0cc35700ce";
-        var url = $"https://newsapi.org/v2/everything?q={Uri.EscapeDataString(hashtag)}&language=pt&apiKey={apiKey}";
-
-        using var http = new HttpClient();
-        http.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
-        var response = await http.GetFromJsonAsync<NewsApiResponse>(url);
-
-        Noticias.Clear();
-        if (response?.Articles != null)
+        get => noticias;
+        set
         {
-            foreach (var artigo in response.Articles)
+            if (noticias != value)
             {
-                Noticias.Add(new Noticia
-                {
-                    Title = artigo.Title,
-                    Description = artigo.Description,
-                    Url = artigo.Url,
-                    ImageUrl = artigo.UrlToImage
-                });
+                noticias = value;
+                OnPropertyChanged();
             }
         }
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    public async Task BuscarNoticiasAsync(string hashtag)
+    {
+        var apiKey = "b9ababd6fcf34185b1994e0cc35700ce";
+        var url = $"https://newsapi.org/v2/everything?q={Uri.EscapeDataString(hashtag)}&language=pt&apiKey={apiKey}";
+
+        try
+        {
+            using var http = new HttpClient();
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+            var response = await http.GetFromJsonAsync<NewsApiResponse>(url);
+
+            System.Diagnostics.Debug.WriteLine($"Resposta: {System.Text.Json.JsonSerializer.Serialize(response)}");
+
+            Noticias.Clear();
+            if (response?.Articles != null)
+            {
+                foreach (var artigo in response.Articles)
+                {
+                    Noticias.Add(new Noticia
+                    {
+                        Title = artigo.Title,
+                        Description = artigo.Description,
+                        Url = artigo.Url,
+                        ImageUrl = artigo.UrlToImage
+                    });
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Nenhum artigo encontrado.");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro ao buscar notícias: {ex.Message}");
+        }
+    }
+
     private class NewsApiResponse
     {
         public List<Article>? Articles { get; set; }
